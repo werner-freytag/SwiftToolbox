@@ -1,9 +1,5 @@
 //
 //  UIColorExtensionTest.swift
-//  News
-//
-//  Created by Werner Freytag on 26.04.16.
-//  Copyright © 2016 SPORT1 GmbH. All rights reserved.
 //
 
 import XCTest
