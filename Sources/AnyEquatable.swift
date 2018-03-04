@@ -10,12 +10,14 @@ public protocol AnyEquatableWrappable {
 }
 
 public extension AnyEquatableWrappable where Self: Equatable {
-    func isEqual(to other: AnyEquatableWrappable) -> Bool {
+    public func isEqual(to other: AnyEquatableWrappable) -> Bool {
         guard let other = other as? Self else { return false }
         return self == other
     }
-    
-    var asEquatable: AnyEquatable {
+}
+
+public extension AnyEquatableWrappable {
+    public var asEquatable: AnyEquatable {
         return AnyEquatable(self)
     }
 }
@@ -23,7 +25,7 @@ public extension AnyEquatableWrappable where Self: Equatable {
 public struct AnyEquatable {
     fileprivate let object: AnyEquatableWrappable
     
-    init(_ object: AnyEquatableWrappable) {
+    public init(_ object: AnyEquatableWrappable) {
         self.object = object
     }
 }

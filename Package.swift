@@ -26,5 +26,6 @@ let package = Package(
             name: "SwiftToolboxTests",
             dependencies: ["SwiftToolbox", "Nimble"],
             path: "Tests"),
-    ]
+    ],
+    swiftLanguageVersions: [4]
 )
