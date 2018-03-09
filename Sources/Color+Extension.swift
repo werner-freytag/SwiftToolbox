@@ -64,31 +64,31 @@ public extension Color {
         return ((components.red * 299) + (components.green * 587) + (components.blue * 114)) / 1000
     }
 
-    func withBrightnessComponent(_ brightness: CGFloat) -> Color {
+    public func withBrightnessComponent(_ brightness: CGFloat) -> Color {
         return Color(hue: hueComponent, saturation: saturationComponent, brightness: brightness, alpha: alphaComponent)
     }
     
-    func withSaturationComponent(_ saturation: CGFloat) -> Color {
+    public func withSaturationComponent(_ saturation: CGFloat) -> Color {
         return Color(hue: hueComponent, saturation: saturation, brightness: brightnessComponent, alpha: alphaComponent)
     }
     
-    func withHueComponent(_ hue: CGFloat) -> Color {
+    public func withHueComponent(_ hue: CGFloat) -> Color {
         return Color(hue: hue, saturation: saturationComponent, brightness: brightnessComponent, alpha: alphaComponent)
     }
     
-    func darken(_ percentage: CGFloat) -> Color {
+    public func darken(_ percentage: CGFloat) -> Color {
         return withBrightnessComponent(decrease(brightnessComponent, percentage))
     }
     
-    func lighten(_ percentage: CGFloat) -> Color {
+    public func lighten(_ percentage: CGFloat) -> Color {
         return withBrightnessComponent(increase(brightnessComponent, percentage))
     }
     
-    func desaturate(_ percentage: CGFloat) -> Color {
+    public func desaturate(_ percentage: CGFloat) -> Color {
         return withSaturationComponent(decrease(saturationComponent, percentage))
     }
     
-    func saturate(_ percentage: CGFloat) -> Color {
+    public func saturate(_ percentage: CGFloat) -> Color {
         return withSaturationComponent(increase(saturationComponent, percentage))
     }
     
