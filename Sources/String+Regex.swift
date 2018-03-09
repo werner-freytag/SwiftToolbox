@@ -5,7 +5,7 @@
 import Foundation
 
 extension String {
-    func regexQuoted() -> String {
+    public func regexQuoted() -> String {
         return replacingOccurrences(of: "\\[|\\]|\\(|\\)|\\\\|\\*|\\+|\\?|\\{|\\}|\\^|\\$|\\.|\\||\\^|\\$",
                              with: "\\\\$0",
                              options: .regularExpression)
