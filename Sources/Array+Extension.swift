@@ -33,8 +33,8 @@ public extension Array where Element : Equatable {
 		return filter { array.contains($0) }
 	}
 	
-	var uniqueElements:[Element] {
-		var resultArray:[Element] = []
+	var uniqueElements: [Element] {
+		var resultArray: [Element] = []
 		for element in self where !resultArray.contains(element) {
 			resultArray.append(element)
 		}
