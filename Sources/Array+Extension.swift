@@ -12,28 +12,28 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array where Element : NSObject {
-	func filter(_ predicate:NSPredicate) -> [Iterator.Element] {
+	public func filter(_ predicate:NSPredicate) -> [Iterator.Element] {
 		return (self as NSArray).filtered(using: predicate) as! [Iterator.Element]
 	}
 }
 
 public extension Array where Element : Hashable {
-	var uniqueElements:[Element] {
+	public func uniqueElements() -> [Element] {
 		var single = Set<Element>()
 		return filter { single.insert($0).inserted }
 	}
 }
 
 public extension Array where Element : Equatable {
-	mutating func removeDuplicateElements() {
-		self = uniqueElements
+	public mutating func removeDuplicateElements() {
+        self = uniqueElements()
 	}
 	
-	func intersection(_ array: [Element]) -> [Element] {
+	public func intersection(_ array: [Element]) -> [Element] {
 		return filter { array.contains($0) }
 	}
 	
-	var uniqueElements: [Element] {
+	public func uniqueElements() -> [Element] {
 		var resultArray: [Element] = []
 		for element in self where !resultArray.contains(element) {
 			resultArray.append(element)

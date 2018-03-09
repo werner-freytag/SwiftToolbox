@@ -15,7 +15,7 @@ class ArrayExtensionTest: XCTestCase {
 
 	func testUniqueElements() {
 		let array = ["ABC", "DEF", "GHI", "DEF"]
-		expect(array.uniqueElements).to(equal(["ABC", "DEF", "GHI"]))
+		expect(array.uniqueElements()).to(equal(["ABC", "DEF", "GHI"]))
 	}
 	
 	func testRemoveDuplicateElements() {
