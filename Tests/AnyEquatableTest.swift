@@ -3,8 +3,8 @@
 //
 
 import Nimble
-import SwiftToolbox
 import XCTest
+@testable import SwiftToolbox
 
 class AnyEquatableTest: XCTestCase {
     func testAnyEquatableTest() {
