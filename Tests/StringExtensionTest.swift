@@ -26,5 +26,13 @@ class StringExtensionTest: XCTestCase {
         expect("Hello"[0]) == "H"
         expect("Hello"[3]) == "l"
     }
+    
+    func testCommonSuffix() {
+        expect("Hello World".commonSuffix(with: "Other World")) == " World"
+        expect("Hello World".commonSuffix(with: "No matching")) == ""
+        expect("".commonSuffix(with: "Other World")) == ""
+        
+        expect("Hello World".commonSuffix(with: "Other world")) == "orld"
+        expect("Hello World".commonSuffix(with: "Other world", options: [.caseInsensitive])) == " World"
+    }
 }
-
