@@ -11,36 +11,6 @@ extension String {
 }
 
 extension String {
-    public subscript(range: CountablePartialRangeFrom<Int>) -> Substring {
-        return self[index(startIndex, offsetBy: range.lowerBound)...]
-    }
-    
-    public subscript(range: CountableRange<Int>) -> Substring {
-        return self[index(startIndex, offsetBy: range.lowerBound)..<index(startIndex, offsetBy: range.upperBound)]
-    }
-    
-    public subscript(range: CountableClosedRange<Int>) -> Substring {
-        return self[index(startIndex, offsetBy: range.lowerBound)...index(startIndex, offsetBy: range.upperBound)]
-    }
-    
-    public subscript(range: PartialRangeUpTo<Int>) -> Substring {
-        return self[..<index(startIndex, offsetBy: range.upperBound)]
-    }
-    
-    public subscript(range: PartialRangeThrough<Int>) -> Substring {
-        return self[...index(startIndex, offsetBy: range.upperBound)]
-    }
-    
-    public subscript(index: Int) -> Substring {
-        return self[index...index]
-    }
-    
-    public func naturalCompare(_ other: String) -> Bool {
-        return localizedCaseInsensitiveCompare(other) == .orderedSame
-    }
-}
-
-extension String {
     public func base64Encoded() -> Data? {
         return Data(base64Encoded: self)
     }
@@ -53,9 +23,8 @@ extension String {
 }
 
 extension String {
-    public func commonSuffix<T: StringProtocol>(with aString: T, options: String.CompareOptions = []) -> String {
-        let reversedSuffix = String(reversed()).commonPrefix(with: String(aString.reversed()), options: options)
-        return String(reversedSuffix.reversed())
+    public func naturalCompare(_ other: String) -> Bool {
+        return localizedCaseInsensitiveCompare(other) == .orderedSame
     }
 }
 
@@ -66,4 +35,3 @@ extension Array where Element == String {
         }
     }
 }
-
