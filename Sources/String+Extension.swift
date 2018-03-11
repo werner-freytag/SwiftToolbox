@@ -52,6 +52,13 @@ extension String {
     }
 }
 
+extension String {
+    public func commonSuffix<T: StringProtocol>(with aString: T, options: String.CompareOptions = []) -> String {
+        let reversedSuffix = String(reversed()).commonPrefix(with: String(aString.reversed()), options: options)
+        return String(reversedSuffix.reversed())
+    }
+}
+
 extension Array where Element == String {
     public func naturalSorted() -> [String] {
         return sorted {
