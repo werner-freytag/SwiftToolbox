@@ -36,3 +36,13 @@ extension StringProtocol where Index == String.Index {
         return String(reversedSuffix.reversed())
     }
 }
+
+extension StringProtocol where Index == String.Index {
+    public func camelcased() -> String {
+        let str = replacingOccurrences(of: "[0-9]+", with: " $0 ", options: .regularExpression)
+        
+        return str.components(separatedBy: CharacterSet.alphanumerics.inverted).map {
+            $0.prefix(1).uppercased() + $0.dropFirst()
+        }.joined()
+    }
+}

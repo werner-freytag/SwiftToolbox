@@ -25,4 +25,13 @@ class StringProtocolExtensionTest: XCTestCase {
         expect("Hello World".commonSuffix(with: "Other world")) == "orld"
         expect("Hello World".commonSuffix(with: "Other world", options: [.caseInsensitive])) == " World"
     }
+    
+    func testCamelcased() {
+        expect("hello world".camelcased()) == "HelloWorld"
+        expect("hello-world".camelcased()) == "HelloWorld"
+        expect("helloWorld".camelcased()) == "HelloWorld"
+        expect("äntonÖrtel".camelcased()) == "ÄntonÖrtel"
+        expect("123test".camelcased()) == "123Test"
+        expect("ÄntónÖrtel".camelcased()) == "ÄntónÖrtel"
+    }
 }
