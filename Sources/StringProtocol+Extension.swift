@@ -38,11 +38,39 @@ extension StringProtocol where Index == String.Index {
 }
 
 extension StringProtocol where Index == String.Index {
-    public func camelcased() -> String {
-        let str = replacingOccurrences(of: "[0-9]+", with: " $0 ", options: .regularExpression)
+    
+    /// Escapes regex chars in a string
+    public func regexQuoted() -> String {
+        return replacingOccurrences(of: "\\[|\\]|\\(|\\)|\\\\|\\*|\\+|\\?|\\{|\\}|\\^|\\$|\\.|\\||\\^|\\$",
+                                    with: "\\\\$0",
+                                    options: .regularExpression)
+    }
+
+    /// Returns all matches of a pattern
+    public func substrings(matching regex: String, options: String.CompareOptions = []) -> [Self.SubSequence] {
+        var options = options
+        options.insert(.regularExpression)
         
-        return str.components(separatedBy: CharacterSet.alphanumerics.inverted).map {
-            $0.prefix(1).uppercased() + $0.dropFirst()
-        }.joined()
+        var result: [Self.SubSequence] = []
+        
+        var range = startIndex..<endIndex
+        while let foundRange = self.range(of: regex, options: options, range: range, locale: nil) {
+            result.append(self[foundRange])
+            range = foundRange.upperBound..<endIndex
+        }
+        
+        return result
+    }
+}
+
+extension StringProtocol where Index == String.Index {
+    public func findWords() -> [Self.SubSequence] {
+        return substrings(matching: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+")
+    }
+}
+
+extension StringProtocol where Index == String.Index {
+    public func upperCamelCased() -> String {
+        return findWords().map { $0.prefix(1).uppercased() + $0.dropFirst().lowercased() }.joined()
     }
 }

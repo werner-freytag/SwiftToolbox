@@ -35,3 +35,28 @@ extension Array where Element == String {
         }
     }
 }
+
+extension String {
+    
+    /// Returns all subpatterns of the first match
+    public func match(regex: String) throws -> [String]? {
+        let regex = try NSRegularExpression(pattern: regex)
+        let nsString = self as NSString
+        
+        guard let match = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length)).first
+            else { return nil }
+        
+        var components:[String] = []
+        for i in 0..<match.numberOfRanges {
+            let range = match.range(at: i)
+            if range.location == NSNotFound {
+                components.append("")
+            }
+            else {
+                components.append(nsString.substring(with: range) as String)
+            }
+        }
+        
+        return components
+    }
+}
