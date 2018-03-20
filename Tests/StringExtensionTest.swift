@@ -15,4 +15,12 @@ class StringExtensionTest: XCTestCase {
         expect("\t   Hello \n".trimmed) == "Hello"
         expect("  \n\t   Hello \n\r \t ".trimmed) == "Hello"
     }
+
+    func testMatchRegex() {
+        expect(try! "Hello".match(regex: "l+")) == ["ll"]
+        expect(try! "Hello".match(regex: "(l+)")) == ["ll", "ll"]
+        expect(try? "Hello".match(regex: "(^l+")).to(beNil())
+        expect(try! "Hello".match(regex: "^(l+)")).to(beNil())
+        expect(try! "Hello".match(regex: "^H(e)(l+)")) == ["Hell", "e", "ll"]
+    }
 }
