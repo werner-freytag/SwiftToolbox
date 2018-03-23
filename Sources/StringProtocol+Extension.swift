@@ -56,7 +56,14 @@ extension StringProtocol where Index == String.Index {
         var range = startIndex..<endIndex
         while let foundRange = self.range(of: regex, options: options, range: range, locale: nil) {
             result.append(self[foundRange])
-            range = foundRange.upperBound..<endIndex
+            
+            guard foundRange.upperBound < endIndex else { break }
+            
+            if foundRange.upperBound > range.lowerBound {
+                range = foundRange.upperBound..<endIndex
+            } else {
+                range = index(after: range.lowerBound)..<endIndex
+            }
         }
         
         return result
