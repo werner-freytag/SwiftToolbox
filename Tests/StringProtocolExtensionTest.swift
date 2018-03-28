@@ -27,6 +27,7 @@ class StringProtocolExtensionTest: XCTestCase {
     }
     
     func testFindWords() {
+        expect("Lorem ipsum dolor sit amet, consetetur sadipscing elitr.".findWords()) == ["Lorem", "ipsum", "dolor", "sit", "amet", "consetetur", "sadipscing", "elitr"]
         expect("MünchenBavaria1980Ørt".findWords()) == ["München", "Bavaria", "1980", "Ørt"]
         expect("with.dots.between1997".findWords()) == ["with", "dots", "between", "1997"]
         expect("under_scored_text".findWords()) == ["under", "scored", "text"]
@@ -54,5 +55,6 @@ class StringProtocolExtensionTest: XCTestCase {
     
     func testSubstringsMatching() {
         expect("Hello".substrings(matching: ".[eo]")) == ["He", "lo"]
+        expect("Hello".substrings(matching: ".*?")) == ["", "", "", "", "", ""]
     }
 }
