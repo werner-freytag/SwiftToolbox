@@ -1,0 +1,8 @@
+module: SwiftToolbox
+author: Werner Freytag
+
+clean: true
+skip_undocumented: false
+
+xcodebuild_arguments: [-target, SwiftToolbox, LIBRARY_SEARCH_PATHS=.build/debug]
+
