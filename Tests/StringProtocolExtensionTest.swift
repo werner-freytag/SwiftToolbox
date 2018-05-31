@@ -57,4 +57,49 @@ class StringProtocolExtensionTest: XCTestCase {
         expect("Hello".substrings(matching: ".[eo]")) == ["He", "lo"]
         expect("Hello".substrings(matching: ".*?")) == ["", "", "", "", "", ""]
     }
+    
+    func testPathExtension() {
+        // Different cases
+        expect("Name.gif".pathExtension) == "gif"
+        expect("Name.GIF".pathExtension) == "GIF"
+        expect("Name.Gif".pathExtension) == "Gif"
+        expect("Name.giF".pathExtension) == "giF"
+        expect("Name._GIF".pathExtension) == "_GIF"
+
+        // Longer extension
+        expect("Name.fileExt".pathExtension) == "fileExt"
+        expect("Name.FILEEXT".pathExtension) == "FILEEXT"
+        expect("Name.FileExt".pathExtension) == "FileExt"
+        
+        // Max 20 Chars in last Extension
+        expect("Name.VeryLongpathExtension".pathExtension) == ""
+        
+        // Double extension
+        expect("Name.html.twig".pathExtension) == "html.twig"
+        
+        // No camel case in 2nd extension
+        expect("Mr.Smith.txt".pathExtension) == "txt"
+        
+        // No Space in 2nd extension
+        expect("Mr. smith.txt".pathExtension) == "txt"
+
+        // Max 10 Chars in 2nd Extension
+        expect("Name.pathExtensionTest.jpg".pathExtension) == "jpg"
+        
+        // No tripple extension
+        expect("Name.test.html.twig".pathExtension) == "html.twig"
+
+        // No extension
+        expect("Name".pathExtension) == ""
+        // Only a-z0-9 and _
+        expect("Name.nö".pathExtension) == ""
+        expect("Name.-TXT".pathExtension) == ""
+        
+        // Not complete string
+        expect(".scratch.tiff".pathExtension) == "tiff"
+        expect(".scratch".pathExtension) == ""
+        
+        // Ignore duplicate dot
+        expect("scratch..tiff".pathExtension) == "tiff"
+    }
 }
