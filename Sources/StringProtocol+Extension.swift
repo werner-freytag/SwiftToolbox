@@ -87,7 +87,7 @@ extension StringProtocol where Index == String.Index {
         let pattern = "[^\\.]\\.+(([_a-z0-9]{1,10}|[_A-Z0-9]{1,10})\\.)?[_A-Za-z0-9]{1,20}$"
         
         guard let range = self.range(of: pattern, options: [.regularExpression, .widthInsensitive])
-            else { return "" }
+            else { return self[endIndex...] }
         
         // Unfortunately Swift does not support lookbehind with dynamic length, so we must remove the non-needed part ourselves
         let dots = self.range(of: "\\.+", options: [.regularExpression], range: index(range.lowerBound, offsetBy: 1)..<range.upperBound)!
