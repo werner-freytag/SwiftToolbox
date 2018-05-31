@@ -19,6 +19,4 @@ class StringProtocolPartitionTest: XCTestCase {
         
         expect(str.partition()) == []
     }
-    
-    
 }
