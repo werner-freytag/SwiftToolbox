@@ -72,7 +72,7 @@ class StringProtocolExtensionTest: XCTestCase {
         expect("Name.FileExt".pathExtension) == "FileExt"
         
         // Max 20 Chars in last Extension
-        expect("Name.VeryLongpathExtension".pathExtension) == ""
+        expect("Name.VeryLongPathExtension".pathExtension) == ""
         
         // Double extension
         expect("Name.html.twig".pathExtension) == "html.twig"
@@ -91,6 +91,7 @@ class StringProtocolExtensionTest: XCTestCase {
 
         // No extension
         expect("Name".pathExtension) == ""
+        
         // Only a-z0-9 and _
         expect("Name.nö".pathExtension) == ""
         expect("Name.-TXT".pathExtension) == ""
@@ -101,5 +102,51 @@ class StringProtocolExtensionTest: XCTestCase {
         
         // Ignore duplicate dot
         expect("scratch..tiff".pathExtension) == "tiff"
+    }
+
+    func testDeletingPathExtension() {
+        // Different cases
+        expect("Name.gif".deletingPathExtension) == "Name"
+        expect("Name.GIF".deletingPathExtension) == "Name"
+        expect("Name.Gif".deletingPathExtension) == "Name"
+        expect("Name.giF".deletingPathExtension) == "Name"
+        expect("Name._GIF".deletingPathExtension) == "Name"
+        
+        // Longer extension
+        expect("Name.fileExt".deletingPathExtension) == "Name"
+        expect("Name.FILEEXT".deletingPathExtension) == "Name"
+        expect("Name.FileExt".deletingPathExtension) == "Name"
+        
+        // Max 20 Chars in last Extension
+        expect("Name.VeryLongPathExtension".deletingPathExtension) == "Name.VeryLongPathExtension"
+        
+        // Double extension
+        expect("Name.html.twig".deletingPathExtension) == "Name"
+        
+        // No camel case in 2nd extension
+        expect("Mr.Smith.txt".deletingPathExtension) == "Mr.Smith"
+        
+        // No Space in 2nd extension
+        expect("Mr. smith.txt".deletingPathExtension) == "Mr. smith"
+        
+        // Max 10 Chars in 2nd Extension
+        expect("Name.pathExtensionTest.jpg".deletingPathExtension) == "Name.pathExtensionTest"
+        
+        // No tripple extension
+        expect("Name.test.html.twig".deletingPathExtension) == "Name.test"
+        
+        // No extension
+        expect("Name".deletingPathExtension) == "Name"
+        
+        // Only a-z0-9 and _
+        expect("Name.nö".deletingPathExtension) == "Name.nö"
+        expect("Name.-TXT".deletingPathExtension) == "Name.-TXT"
+        
+        // Not complete string
+        expect(".scratch.tiff".deletingPathExtension) == ".scratch"
+        expect(".scratch".deletingPathExtension) == ".scratch"
+        
+        // Ignore duplicate dot
+        expect("scratch..tiff".deletingPathExtension) == "scratch"
     }
 }
