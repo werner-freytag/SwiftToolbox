@@ -51,7 +51,12 @@ public extension Color {
     private typealias RGBComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
 
     private var rgbComponents: RGBComponents? {
-        guard let rgbColor = usingColorSpace(.genericRGB) else { return nil }
+        #if os(OSX)
+            guard let rgbColor = usingColorSpace(.genericRGB) else { return nil }
+        #else
+            let rgbColor = self
+        #endif
+        
 
         var components = RGBComponents(red: 0, green: 0, blue: 0, alpha: 0)
         rgbColor.getRed(&components.red, green: &components.green, blue: &components.blue, alpha: &components.alpha)
