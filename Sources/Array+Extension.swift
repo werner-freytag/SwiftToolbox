@@ -53,3 +53,27 @@ public func -=<T:Equatable>(lhs:inout Array<T>, rhs:Array<T>) {
 	}
 }
 
+extension Array where Element : Equatable {
+    private func adaptLength<T: RandomAccessCollection>(with other: T) -> ArraySlice<Element> {
+        return prefix(Swift.min(count, other.count))
+    }
+
+    public func commonPrefix<T: RandomAccessCollection>(with other: T) -> T.SubSequence
+        where T.Element == Element, T.Index == Index {
+            
+        let array = adaptLength(with: other)
+        let prefixCnt = array.enumerated().first { $0.1 != other[$0.0] }?.offset ?? array.endIndex
+
+        return other[..<prefixCnt]
+    }
+    
+    public func commonSuffix<T: RandomAccessCollection>(with other: T) -> T.SubSequence
+        where T.Element == Element, T.Index == Index {
+            
+            let array = reversed().adaptLength(with: other)
+            let cnt = other.count
+            let prefixCnt = array.enumerated().first { $0.1 != other[cnt - $0.0 - 1] }?.offset ?? array.endIndex
+            
+            return other[(cnt - prefixCnt)...]
+    }
+}
