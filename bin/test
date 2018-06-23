@@ -1,0 +1,7 @@
+#!/bin/bash
+
+swift test \
+  -Xswiftc "-suppress-warnings" \
+  -Xswiftc "-target" \
+  -Xswiftc "x86_64-apple-macosx10.13"
+
