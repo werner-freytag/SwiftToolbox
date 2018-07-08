@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class EqualableTest: XCTestCase {
+class EqualableTests: XCTestCase {
     func testEqualable() {
         expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 2))) == true
         expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 3))) == false

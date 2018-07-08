@@ -22,7 +22,7 @@ import XCTest
     }
 #endif
 
-class ColorExtensionTest : XCTestCase {
+class ColorExtensionTests : XCTestCase {
     private var colors = (
         white: Color.white,
         black: Color.black,

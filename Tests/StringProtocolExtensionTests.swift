@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class StringProtocolExtensionTest: XCTestCase {
+class StringProtocolExtensionTests: XCTestCase {
     func testSubscripts() {
         expect("Hello"[2...]) == "llo"
         expect("Hello"[2..<3]) == "l"

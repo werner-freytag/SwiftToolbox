@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class StringProtocolPartitionTest: XCTestCase {
+class StringProtocolPartitionTests: XCTestCase {
     
     func testPartition() {
         let str = "Hello"
