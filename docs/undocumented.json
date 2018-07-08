@@ -1,76 +1,6 @@
 {
   "warnings": [
     {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": null,
-      "symbol": "AnyEquatable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": null,
-      "symbol": "AnyEquatableWrappable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": null,
-      "symbol": "AnyEquatableWrappable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 7,
-      "symbol": "AnyEquatableWrappable",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 8,
-      "symbol": "AnyEquatableWrappable.isEqual(to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 9,
-      "symbol": "AnyEquatableWrappable.asEquatable",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 13,
-      "symbol": "AnyEquatableWrappable.isEqual(to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 20,
-      "symbol": "AnyEquatableWrappable.asEquatable",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 25,
-      "symbol": "AnyEquatable",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/AnyEquatable.swift",
-      "line": 28,
-      "symbol": "AnyEquatable.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Array+Extension.swift",
       "line": 8,
       "symbol": "Array.remove(_:)",
@@ -127,6 +57,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Array+Extension.swift",
+      "line": 61,
+      "symbol": "Array.commonPrefix(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Array+Extension.swift",
+      "line": 70,
+      "symbol": "Array.commonSuffix(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
       "line": null,
       "symbol": "Color",
@@ -156,57 +100,106 @@
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 62,
+      "line": 67,
       "symbol": "Color.visualBrightness",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 67,
+      "line": 72,
       "symbol": "Color.withBrightnessComponent(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 71,
+      "line": 76,
       "symbol": "Color.withSaturationComponent(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 75,
+      "line": 80,
       "symbol": "Color.withHueComponent(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 79,
+      "line": 84,
       "symbol": "Color.darken(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 83,
+      "line": 88,
       "symbol": "Color.lighten(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 87,
+      "line": 92,
       "symbol": "Color.desaturate(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/Color+Extension.swift",
-      "line": 91,
+      "line": 96,
       "symbol": "Color.saturate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": null,
+      "symbol": "AnyEqualable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": null,
+      "symbol": "Equalable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": 7,
+      "symbol": "Equalable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": 8,
+      "symbol": "Equalable.equals(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": 12,
+      "symbol": "Equalable.equals(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": 18,
+      "symbol": "AnyEqualable",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/Equalable.swift",
+      "line": 21,
+      "symbol": "AnyEqualable.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -303,14 +296,14 @@
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/StringProtocol+Extension.swift",
-      "line": 74,
+      "line": 89,
       "symbol": "StringProtocol.findWords()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/StringProtocol+Extension.swift",
-      "line": 80,
+      "line": 95,
       "symbol": "StringProtocol.upperCamelCased()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

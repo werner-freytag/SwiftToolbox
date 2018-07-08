@@ -27,11 +27,11 @@ class StringProtocolExtensionTest: XCTestCase {
     }
     
     func testFindWords() {
-        expect("Lorem ipsum dolor sit amet, consetetur sadipscing elitr.".findWords()) == ["Lorem", "ipsum", "dolor", "sit", "amet", "consetetur", "sadipscing", "elitr"]
-        expect("MünchenBavaria1980Ørt".findWords()) == ["München", "Bavaria", "1980", "Ørt"]
-        expect("with.dots.between1997".findWords()) == ["with", "dots", "between", "1997"]
-        expect("under_scored_text".findWords()) == ["under", "scored", "text"]
-        expect("With Spaces  2008".findWords()) == ["With", "Spaces", "2008"]
+        expect(Array("Lorem ipsum dolor sit amet, consetetur sadipscing elitr.".findWords())) == ["Lorem", "ipsum", "dolor", "sit", "amet", "consetetur", "sadipscing", "elitr"]
+        expect(Array("MünchenBavaria1980Ørt".findWords())) == ["München", "Bavaria", "1980", "Ørt"]
+        expect(Array("with.dots.between1997".findWords())) == ["with", "dots", "between", "1997"]
+        expect(Array("under_scored_text".findWords())) == ["under", "scored", "text"]
+        expect(Array("With Spaces  2008".findWords())) == ["With", "Spaces", "2008"]
     }
     
     func testUpperCamelCased() {
@@ -54,8 +54,8 @@ class StringProtocolExtensionTest: XCTestCase {
     }
     
     func testSubstringsMatching() {
-        expect("Hello".substrings(matching: ".[eo]")) == ["He", "lo"]
-        expect("Hello".substrings(matching: ".*?")) == ["", "", "", "", "", ""]
+        expect(Array("Hello".substrings(matching: ".[eo]", options: .regularExpression))) == ["He", "lo"]
+        expect(Array("Hello".substrings(matching: ".*?", options: .regularExpression))) == ["", "", "", "", ""]
     }
     
     func testPathExtension() {
