@@ -12,7 +12,7 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array where Element : NSObject {
-	public func filter(_ predicate:NSPredicate) -> [Iterator.Element] {
+	public func filter(_ predicate: NSPredicate) -> [Iterator.Element] {
 		return (self as NSArray).filtered(using: predicate) as! [Iterator.Element]
 	}
 }

@@ -38,41 +38,56 @@ extension StringProtocol where Index == String.Index {
 }
 
 extension StringProtocol where Index == String.Index {
-    
     /// Escapes regex chars in a string
+    ///
+    /// - Returns: escpaped string
     public func regexQuoted() -> String {
         return replacingOccurrences(of: "\\[|\\]|\\(|\\)|\\\\|\\*|\\+|\\?|\\{|\\}|\\^|\\$|\\.|\\||\\^|\\$",
                                     with: "\\\\$0",
                                     options: .regularExpression)
     }
+}
 
-    /// Returns all matches of a pattern
-    public func substrings(matching regex: String, options: String.CompareOptions = []) -> [Self.SubSequence] {
-        var options = options
-        options.insert(.regularExpression)
-        
-        var result: [Self.SubSequence] = []
-        
-        var range = startIndex..<endIndex
-        while let foundRange = self.range(of: regex, options: options, range: range, locale: nil) {
-            result.append(self[foundRange])
+extension StringProtocol where Index == String.Index {
+    
+    /// Returns a sequence of substrings for all matches of the given search string
+    ///
+    /// - Parameters:
+    ///   - searchString: The string to search for.
+    ///   - options: A mask specifying search options.
+    /// - Returns: A sequence providing the substring for all matches
+    public func substrings(matching searchString: String, options: String.CompareOptions = []) -> AnySequence<Self.SubSequence> {
+        return AnySequence(ranges(matching: searchString, options: options)
+            .lazy
+            .map { self[$0] })
+    }
+    
+    /// Returns a sequence for all matches of the given search string
+    ///
+    /// - Parameters:
+    ///   - searchString: The string to search for.
+    ///   - options: A mask specifying search options.
+    /// - Returns: A sequence providing the range for all matches
+    public func ranges(matching searchString: String, options: String.CompareOptions = []) -> AnySequence<Range<String.Index>> {
+        return AnySequence(sequence(state: startIndex) { offset in
+            guard offset < self.endIndex,
+                let foundRange = self.range(of: searchString, options: options, range: offset..<self.endIndex)
+                else { return nil }
             
-            guard foundRange.upperBound < endIndex else { break }
-            
-            if foundRange.upperBound > range.lowerBound {
-                range = foundRange.upperBound..<endIndex
+            if foundRange.upperBound > offset {
+                offset = foundRange.upperBound
             } else {
-                range = index(after: range.lowerBound)..<endIndex
+                offset = self.index(after: offset)
             }
-        }
-        
-        return result
+            
+            return foundRange
+        })
     }
 }
 
 extension StringProtocol where Index == String.Index {
-    public func findWords() -> [Self.SubSequence] {
-        return substrings(matching: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+")
+    public func findWords() -> AnySequence<Self.SubSequence> {
+        return substrings(matching: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
     }
 }
 
