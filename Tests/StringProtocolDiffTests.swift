@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class StringProtocolDiffTest: XCTestCase {
+class StringProtocolDiffTests: XCTestCase {
     func testDiffBeginning() {
         let str = "Hello"
         let diff = str.diff(with: "hello")!

@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class StringExtensionTest: XCTestCase {
+class StringExtensionTests: XCTestCase {
     func testTrimming() {
         expect("Hello".trimmed) == "Hello"
         expect("Hello     ".trimmed) == "Hello"

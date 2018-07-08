@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class ArrayExtensionTest: XCTestCase {
+class ArrayExtensionTests: XCTestCase {
 	func testRemoveObject() {
 		var array = ["ABC", "DEF", "GHI"]
 		array.remove("DEF")

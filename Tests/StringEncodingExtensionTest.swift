@@ -6,7 +6,7 @@ import Nimble
 import XCTest
 @testable import SwiftToolbox
 
-class StringEncodingsExtensionTest: XCTestCase {
+class StringEncodingsExtensionTests: XCTestCase {
     func testComplete() {
         let expected : [String.Encoding] = [
             .macOSRoman,
