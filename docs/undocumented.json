@@ -204,6 +204,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/LoopSequence.swift",
+      "line": 12,
+      "symbol": "LoopSequence.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/String+Extension.swift",
       "line": 8,
       "symbol": "String.trimmed",
