@@ -83,6 +83,8 @@ extension Array where Element: Equatable {
     /// Returns the smallest slice of elements that can be repeated to form the array
     public var leastCommonSlice: ArraySlice<Element>? {
         let count = self.count
+        guard count > 1 else { return nil }
+        
         var partition: ArraySlice<Element>?
         
         guard (1...count/2).first(where: { partitionSize in
