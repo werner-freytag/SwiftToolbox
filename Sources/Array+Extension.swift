@@ -77,3 +77,29 @@ extension Array where Element : Equatable {
             return other[(cnt - prefixCnt)...]
     }
 }
+
+extension Array where Element: Equatable {
+    
+    /// Returns the smallest slice of elements that can be repeated to form the array
+    public var leastCommonSlice: ArraySlice<Element>? {
+        let count = self.count
+        var partition: ArraySlice<Element>?
+        
+        guard (1...count/2).first(where: { partitionSize in
+            guard count % partitionSize == 0 else { return false }
+            
+            partition = self[0..<partitionSize]
+            let numberOfPartitions = count / partitionSize
+            
+            return (1..<numberOfPartitions).first(where: { iteration in
+                let offset = partitionSize * iteration
+                return partition != self[offset..<offset + partitionSize]
+            }) == nil
+            
+        }) != nil else {
+            return nil
+        }
+        
+        return partition
+    }
+}

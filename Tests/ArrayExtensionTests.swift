@@ -46,4 +46,9 @@ class ArrayExtensionTests: XCTestCase {
         expect(["C"].commonSuffix(with: ["A", "B", "C"])) == ["C"]
         expect(Array([].commonSuffix(with: ["A", "B", "C"]))) == []
     }
+
+    func testLeastCommonSlice() {
+        expect(["Bla", ".", "Bla", ".", "Bla", ".", "Bla", ".", "Bla", "."].leastCommonSlice) == ["Bla", "."]
+        expect(["Bla", ".", "Bla", ".", "Bla", ".", "Bla", ".", "Bla", "X"].leastCommonSlice).to(beNil())
+    }
 }
