@@ -50,5 +50,7 @@ class ArrayExtensionTests: XCTestCase {
     func testLeastCommonSlice() {
         expect(["Bla", ".", "Bla", ".", "Bla", ".", "Bla", ".", "Bla", "."].leastCommonSlice) == ["Bla", "."]
         expect(["Bla", ".", "Bla", ".", "Bla", ".", "Bla", ".", "Bla", "X"].leastCommonSlice).to(beNil())
+        expect(["Bla", "Bla"].leastCommonSlice) == ["Bla"]
+        expect(["Bla"].leastCommonSlice).to(beNil())
     }
 }
