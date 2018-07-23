@@ -105,3 +105,23 @@ extension Array where Element: Equatable {
         return partition
     }
 }
+
+extension Array where Element : Equatable {
+    
+    /// Returns the non-overlapping positions of the given slice in the array
+    public func find(slice: ArraySlice<Element>) -> [Int] {
+        var foundOffsets: [Int] = []
+        let sliceLength = slice.count
+        var fromOffset = 0
+        while fromOffset <= count - sliceLength {
+            if self[fromOffset..<fromOffset+sliceLength] == slice {
+                foundOffsets.append(fromOffset)
+                fromOffset += sliceLength
+            } else {
+                fromOffset += 1
+            }
+        }
+        
+        return foundOffsets
+    }
+}

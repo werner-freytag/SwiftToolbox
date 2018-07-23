@@ -53,4 +53,11 @@ class ArrayExtensionTests: XCTestCase {
         expect(["Bla", "Bla"].leastCommonSlice) == ["Bla"]
         expect(["Bla"].leastCommonSlice).to(beNil())
     }
+    
+    func testFindSlice() {
+        expect(["A", "B", "A", "A", "C"].find(slice: ["A"])) == [0, 2, 3]
+        expect(["A", "B", "A", "A", "B", "C"].find(slice: ["A", "B"])) == [0, 3]
+        expect(["Hello", "World", "Hello"].find(slice: ["Hello"])) == [0, 2]
+        expect(["Hello", "World", "Hello"].find(slice: ["hello"])) == []
+    }
 }
