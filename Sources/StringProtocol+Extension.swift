@@ -114,7 +114,7 @@ extension StringProtocol where Index == String.Index {
      The last path component of the URL, or an empty string if the path is an empty string.
      */
     public var deletingPathExtension: Self.SubSequence {
-        let pattern = "[^\\.]\\.+(([_a-z0-9]{1,10}|[_A-Z0-9]{1,10})\\.)?[_A-Za-z0-9]{1,20}$"
+        let pattern = "[^\\.]\\.+(([_a-z0-9]{1,10}|[_A-Z0-9]{1,10})\\.)?[_A-Za-z0-9]{1,20}\\.*$"
         
         guard let range = self.range(of: pattern, options: [.regularExpression, .widthInsensitive])
             else { return self[..<endIndex] }

@@ -132,6 +132,9 @@ class StringProtocolExtensionTests: XCTestCase {
         // Max 10 Chars in 2nd Extension
         expect("Name.pathExtensionTest.jpg".deletingPathExtension) == "Name.pathExtensionTest"
         
+        // Ending with dot
+        expect("Name.jpg.".deletingPathExtension) == "Name"
+
         // No tripple extension
         expect("Name.test.html.twig".deletingPathExtension) == "Name.test"
         
