@@ -9,7 +9,7 @@ public protocol Equalable {
 }
 
 public extension Equalable where Self: Equatable {
-    public func equals(_ other: Any) -> Bool {
+    func equals(_ other: Any) -> Bool {
         guard let other = other as? Self else { return false }
         return self == other
     }
