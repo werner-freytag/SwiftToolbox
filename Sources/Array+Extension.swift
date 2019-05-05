@@ -6,34 +6,34 @@ import Foundation
 
 public extension Array where Element: Equatable {
 	@discardableResult mutating func remove(_ object: Element) -> Element? {
-		guard let index = index(of: object) else { return nil }
+		guard let index = firstIndex(of: object) else { return nil }
 		return self.remove(at: index)
 	}
 }
 
 public extension Array where Element : NSObject {
-	public func filter(_ predicate: NSPredicate) -> [Iterator.Element] {
+	func filter(_ predicate: NSPredicate) -> [Iterator.Element] {
 		return (self as NSArray).filtered(using: predicate) as! [Iterator.Element]
 	}
 }
 
 public extension Array where Element : Hashable {
-	public func uniqueElements() -> [Element] {
+	func uniqueElements() -> [Element] {
 		var single = Set<Element>()
 		return filter { single.insert($0).inserted }
 	}
 }
 
 public extension Array where Element : Equatable {
-	public mutating func removeDuplicateElements() {
+	mutating func removeDuplicateElements() {
         self = uniqueElements()
 	}
 	
-	public func intersection(_ array: [Element]) -> [Element] {
+	func intersection(_ array: [Element]) -> [Element] {
 		return filter { array.contains($0) }
 	}
 	
-	public func uniqueElements() -> [Element] {
+	func uniqueElements() -> [Element] {
 		var resultArray: [Element] = []
 		for element in self where !resultArray.contains(element) {
 			resultArray.append(element)

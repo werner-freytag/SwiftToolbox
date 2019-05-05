@@ -16,7 +16,7 @@ class LoopSequenceTests: XCTestCase {
         for i in LoopSequence(0..<3) {
             guard iteration < 10 else { break }
             result.append(i)
-            defer { iteration += 1 }
+            iteration += 1
         }
         
         expect(result) == [0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
