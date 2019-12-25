@@ -3,8 +3,8 @@
 //
 
 import Nimble
-import XCTest
 @testable import SwiftToolbox
+import XCTest
 
 #if os(OSX)
     import AppKit.NSColor
@@ -22,7 +22,7 @@ import XCTest
     }
 #endif
 
-class ColorExtensionTests : XCTestCase {
+class ColorExtensionTests: XCTestCase {
     private var colors = (
         white: Color.white,
         black: Color.black,
@@ -39,7 +39,7 @@ class ColorExtensionTests : XCTestCase {
         rgbGrayWithAlpha: Color(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5),
         hsbGrayWithAlpha: Color(hue: 0, saturation: 0, brightness: 0.5, alpha: 0.5)
     )
-    
+
     func testVisualBrightness() {
         expect(self.colors.white.visualBrightness) == 1
         expect(self.colors.namedGreen.visualBrightness) ≈ (0.63, 0.1)
@@ -50,7 +50,7 @@ class ColorExtensionTests : XCTestCase {
         expect(self.colors.namedRed.visualBrightness) ≈ (0.3, 0.1)
         expect(self.colors.rgbRed.visualBrightness) ≈ (0.3, 0.1)
         expect(self.colors.hsbRed.visualBrightness) ≈ (0.3, 0.1)
-        
+
         expect(self.colors.namedBlue.visualBrightness) ≈ (0.11, 0.1)
         expect(self.colors.rgbBlue.visualBrightness) ≈ (0.11, 0.1)
         expect(self.colors.hsbBlue.visualBrightness) ≈ (0.11, 0.1)
@@ -58,7 +58,7 @@ class ColorExtensionTests : XCTestCase {
         expect(self.colors.namedGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
         expect(self.colors.rgbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
         expect(self.colors.hsbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
-	}
+    }
 
     static var allTests = [
         ("testVisualBrightness", testVisualBrightness),

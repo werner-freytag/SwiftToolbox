@@ -3,32 +3,32 @@
 //
 
 import Nimble
-import XCTest
 @testable import SwiftToolbox
+import XCTest
 
 class ArrayExtensionTests: XCTestCase {
-	func testRemoveObject() {
-		var array = ["ABC", "DEF", "GHI"]
-		array.remove("DEF")
-		expect(array) == ["ABC", "GHI"]
-	}
+    func testRemoveObject() {
+        var array = ["ABC", "DEF", "GHI"]
+        array.remove("DEF")
+        expect(array) == ["ABC", "GHI"]
+    }
 
-	func testUniqueElements() {
-		let array = ["ABC", "DEF", "GHI", "DEF"]
-		expect(array.uniqueElements()) == ["ABC", "DEF", "GHI"]
-	}
-	
-	func testRemoveDuplicateElements() {
-		var array = ["ABC", "DEF", "GHI", "DEF"]
-		array.removeDuplicateElements()
-		expect(array) == ["ABC", "DEF", "GHI"]
-	}
-	
-	func testIntersection() {
-		let array = ["ABC", "DEF", "GHI"]
-		expect(array.intersection(["GHI", "ABC"])) == ["ABC", "GHI"]
-	}
-    
+    func testUniqueElements() {
+        let array = ["ABC", "DEF", "GHI", "DEF"]
+        expect(array.uniqueElements()) == ["ABC", "DEF", "GHI"]
+    }
+
+    func testRemoveDuplicateElements() {
+        var array = ["ABC", "DEF", "GHI", "DEF"]
+        array.removeDuplicateElements()
+        expect(array) == ["ABC", "DEF", "GHI"]
+    }
+
+    func testIntersection() {
+        let array = ["ABC", "DEF", "GHI"]
+        expect(array.intersection(["GHI", "ABC"])) == ["ABC", "GHI"]
+    }
+
     func testCommonPrefix() {
         expect(["A", "b", "C"].commonPrefix(with: ["A", "B", "C"])) == ["A"]
         expect(["A", "B", "C"].commonPrefix(with: ["A", "B", "C"])) == ["A", "B", "C"]
@@ -53,7 +53,7 @@ class ArrayExtensionTests: XCTestCase {
         expect(["Bla", "Bla"].leastCommonSlice) == ["Bla"]
         expect(["Bla"].leastCommonSlice).to(beNil())
     }
-    
+
     func testFindSlice() {
         expect(["A", "B", "A", "A", "C"].find(slice: ["A"])) == [0, 2, 3]
         expect(["A", "B", "A", "A", "B", "C"].find(slice: ["A", "B"])) == [0, 3]

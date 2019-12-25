@@ -17,14 +17,14 @@ public extension Equalable where Self: Equatable {
 
 public struct AnyEqualable {
     let object: Equalable
-    
+
     public init(_ object: Equalable) {
         self.object = object
     }
 }
 
 extension AnyEqualable: Equatable {
-    public static func ==(lhs: AnyEqualable, rhs: AnyEqualable) -> Bool {
+    public static func == (lhs: AnyEqualable, rhs: AnyEqualable) -> Bool {
         return lhs.object.equals(rhs.object)
     }
 }

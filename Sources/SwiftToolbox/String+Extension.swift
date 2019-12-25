@@ -18,7 +18,7 @@ extension String {
 
 extension String {
     public func contains(_ find: String, options: String.CompareOptions = [.caseInsensitive, .widthInsensitive]) -> Bool {
-        return self.range(of: find, options: options) != nil
+        return range(of: find, options: options) != nil
     }
 }
 
@@ -37,26 +37,24 @@ extension Array where Element == String {
 }
 
 extension String {
-    
     /// Returns all subpatterns of the first match
     public func match(regex: String) throws -> [String]? {
         let regex = try NSRegularExpression(pattern: regex)
         let nsString = self as NSString
-        
+
         guard let match = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length)).first
-            else { return nil }
-        
-        var components:[String] = []
-        for i in 0..<match.numberOfRanges {
+        else { return nil }
+
+        var components: [String] = []
+        for i in 0 ..< match.numberOfRanges {
             let range = match.range(at: i)
             if range.location == NSNotFound {
                 components.append("")
-            }
-            else {
+            } else {
                 components.append(nsString.substring(with: range) as String)
             }
         }
-        
+
         return components
     }
 }

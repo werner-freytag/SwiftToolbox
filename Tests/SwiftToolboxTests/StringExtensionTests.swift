@@ -3,8 +3,8 @@
 //
 
 import Nimble
-import XCTest
 @testable import SwiftToolbox
+import XCTest
 
 class StringExtensionTests: XCTestCase {
     func testTrimming() {

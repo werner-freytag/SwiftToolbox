@@ -3,8 +3,8 @@
 //
 
 import Nimble
-import XCTest
 @testable import SwiftToolbox
+import XCTest
 
 class EqualableTests: XCTestCase {
     func testEqualable() {
@@ -32,13 +32,13 @@ extension Apple: Equalable {}
 extension Orange: Equalable {}
 
 extension Apple: Equatable {
-    static func ==(lhs: Apple, rhs: Apple) -> Bool {
+    static func == (lhs: Apple, rhs: Apple) -> Bool {
         return lhs.weight == rhs.weight && lhs.grade == rhs.grade
     }
 }
 
 extension Orange: Equatable {
-    static func ==(lhs: Orange, rhs: Orange) -> Bool {
+    static func == (lhs: Orange, rhs: Orange) -> Bool {
         return lhs.weight == rhs.weight && lhs.grade == rhs.grade
     }
 }

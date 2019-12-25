@@ -3,12 +3,12 @@
 //
 
 import Nimble
-import XCTest
 @testable import SwiftToolbox
+import XCTest
 
 class StringEncodingsExtensionTests: XCTestCase {
     func testComplete() {
-        let expected : [String.Encoding] = [
+        let expected: [String.Encoding] = [
             .macOSRoman,
             .macJapanese,
             .macTraditional,
@@ -115,7 +115,7 @@ class StringEncodingsExtensionTests: XCTestCase {
             .EBCDIC_US,
             .EBCDIC_CP037,
         ]
-        
+
         expect(expected) == String.availableStringEncodings
     }
 
