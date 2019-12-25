@@ -118,4 +118,8 @@ class StringEncodingsExtensionTests: XCTestCase {
         
         expect(expected) == String.availableStringEncodings
     }
+
+    static var allTests = [
+        ("testComplete", testComplete),
+    ]
 }

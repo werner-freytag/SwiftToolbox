@@ -20,4 +20,9 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         expect("hellO" ~< "HellO") == false
         expect("hellO 1" ~< "HellO 2") == true
     }
+
+    static var allTests = [
+        ("testCompareEquals", testCompareEquals),
+        ("testCompareLessThan", testCompareLessThan),
+    ]
 }

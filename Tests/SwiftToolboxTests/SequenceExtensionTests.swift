@@ -14,4 +14,8 @@ class SequenceExtensionTests: XCTestCase {
         expect(emptySequence.isEmpty) == true
         expect(nonEmptySequence.isEmpty) == false
 	}
+
+    static var allTests = [
+        ("testIsEmpty", testIsEmpty),
+    ]
 }

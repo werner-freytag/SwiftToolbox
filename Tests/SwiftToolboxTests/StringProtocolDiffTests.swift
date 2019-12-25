@@ -58,4 +58,12 @@ class StringProtocolDiffTests: XCTestCase {
         
         expect(diff).to(beNil())
     }
+
+    static var allTests = [
+        ("testDiffBeginning", testDiffBeginning),
+        ("testDiffMiddleOverlapping", testDiffMiddleOverlapping),
+        ("testDiffMiddleRemoving", testDiffMiddleRemoving),
+        ("testTwoCharsOverlap", testTwoCharsOverlap),
+        ("testNoMatch", testNoMatch),
+    ]
 }

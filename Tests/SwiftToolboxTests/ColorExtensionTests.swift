@@ -59,4 +59,8 @@ class ColorExtensionTests : XCTestCase {
         expect(self.colors.rgbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
         expect(self.colors.hsbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
 	}
+
+    static var allTests = [
+        ("testVisualBrightness", testVisualBrightness),
+    ]
 }

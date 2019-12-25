@@ -12,6 +12,10 @@ class EqualableTests: XCTestCase {
         expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 3))) == false
         expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Orange(weight: 10, grade: 2))) == false
     }
+
+    static var allTests = [
+        ("testEqualable", testEqualable),
+    ]
 }
 
 struct Apple {

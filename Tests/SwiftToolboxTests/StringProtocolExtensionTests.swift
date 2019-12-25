@@ -152,4 +152,15 @@ class StringProtocolExtensionTests: XCTestCase {
         // Ignore duplicate dot
         expect("scratch..tiff".deletingPathExtension) == "scratch"
     }
+
+    static var allTests = [
+        ("testSubscripts", testSubscripts),
+        ("testCommonSuffix", testCommonSuffix),
+        ("testFindWords", testFindWords),
+        ("testUpperCamelCased", testUpperCamelCased),
+        ("testRegexQuoted", testRegexQuoted),
+        ("testSubstringsMatching", testSubstringsMatching),
+        ("testPathExtension", testPathExtension),
+        ("testDeletingPathExtension", testDeletingPathExtension),
+    ]
 }

@@ -60,4 +60,15 @@ class ArrayExtensionTests: XCTestCase {
         expect(["Hello", "World", "Hello"].find(slice: ["Hello"])) == [0, 2]
         expect(["Hello", "World", "Hello"].find(slice: ["hello"])) == []
     }
+
+    static var allTests = [
+        ("testRemoveObject", testRemoveObject),
+        ("testUniqueElements", testUniqueElements),
+        ("testRemoveDuplicateElements", testRemoveDuplicateElements),
+        ("testIntersection", testIntersection),
+        ("testCommonPrefix", testCommonPrefix),
+        ("testCommonSuffix", testCommonSuffix),
+        ("testLeastCommonSlice", testLeastCommonSlice),
+        ("testFindSlice", testFindSlice),
+    ]
 }

@@ -9,7 +9,6 @@ import XCTest
 class LoopSequenceTests: XCTestCase {
     
     func testSequence() {
-        
         var result: [Int] = []
         
         var iteration = 0
@@ -21,4 +20,8 @@ class LoopSequenceTests: XCTestCase {
         
         expect(result) == [0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
     }
+
+    static var allTests = [
+        ("testSequence", testSequence),
+    ]
 }

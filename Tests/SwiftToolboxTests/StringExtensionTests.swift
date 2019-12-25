@@ -23,4 +23,9 @@ class StringExtensionTests: XCTestCase {
         expect(try! "Hello".match(regex: "^(l+)")).to(beNil())
         expect(try! "Hello".match(regex: "^H(e)(l+)")) == ["Hell", "e", "ll"]
     }
+
+    static var allTests = [
+        ("testTrimming", testTrimming),
+        ("testMatchRegex", testMatchRegex),
+    ]
 }

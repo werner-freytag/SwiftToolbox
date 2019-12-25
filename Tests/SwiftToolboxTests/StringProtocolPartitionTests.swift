@@ -19,4 +19,9 @@ class StringProtocolPartitionTests: XCTestCase {
         
         expect(str.partition()) == []
     }
+
+    static var allTests = [
+        ("testPartition", testPartition),
+        ("testEmpty", testEmpty),
+    ]
 }
