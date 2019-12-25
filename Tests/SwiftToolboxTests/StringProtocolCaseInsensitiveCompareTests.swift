@@ -21,8 +21,18 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         expect("hellO 1" ~< "HellO 2") == true
     }
 
+    func testMatchAgainst() {
+        expect("Hello".match(against: "hello")) == 1
+        expect("Hello".match(against: "hello", options: [])) == 0 // Case sensitive
+        expect("Hello_".match(against: "hello")) ≈ 0.8333
+        expect("_Hello".match(against: "hello")) ≈ 0.75
+        expect("H_ello".match(against: "hello")) ≈ 0.75
+        expect("__Hello".match(against: "hello")) ≈ 0.619
+    }
+
     static var allTests = [
         ("testCompareEquals", testCompareEquals),
         ("testCompareLessThan", testCompareLessThan),
+        ("testMatchAgainst", testMatchAgainst),
     ]
 }
