@@ -28,6 +28,14 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         expect("_Hello".match(against: "hello")) ≈ 0.75
         expect("H_ello".match(against: "hello")) ≈ 0.75
         expect("__Hello".match(against: "hello")) ≈ 0.619
+
+        // Special cases: Empty strings
+        expect("".match(against: "hello")) == 0
+        expect("Hello".match(against: "")) == 0
+        expect("".match(against: "")) == 1
+
+        // Search pattern longer than string
+        expect("Hello".match(against: "Hello_")) == 0
     }
 
     static var allTests = [
