@@ -25,9 +25,9 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         expect("Hello".match(against: "hello")) == 1
         expect("Hello".match(against: "hello", options: [])) == 0 // Case sensitive
         expect("Hello_".match(against: "hello")) ≈ 0.8333
-        expect("_Hello".match(against: "hello")) ≈ 0.75
-        expect("H_ello".match(against: "hello")) ≈ 0.75
-        expect("__Hello".match(against: "hello")) ≈ 0.619
+        expect("H_ello".match(against: "hello")) ≈ 0.5 // Earlier matches rank better
+        expect("_Hello".match(against: "hello")) ≈ 0.4167
+        expect("__Hello".match(against: "hello")) ≈ 0.2381
 
         // Special cases: Empty strings
         expect("".match(against: "hello")) == 0
