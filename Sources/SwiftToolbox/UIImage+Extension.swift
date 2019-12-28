@@ -2,8 +2,8 @@
 //  Copyright © 2017-2019 Werner Freytag. All rights reserved.
 //
 
-import QuartzCore
 #if os(iOS) || os(tvOS)
+    import QuartzCore
     import UIKit
 
     public extension UIImage {
