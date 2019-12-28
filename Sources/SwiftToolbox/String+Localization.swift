@@ -6,7 +6,7 @@ import Foundation
 
 extension String {
     /// Shortcut for NSLocalizedString
-    var localized: String {
+    public var localized: String {
         return NSLocalizedString(self, comment: "")
     }
 }

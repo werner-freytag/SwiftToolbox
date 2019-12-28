@@ -5,7 +5,7 @@
 import Foundation
 
 infix operator ~
-extension StringProtocol where Index == String.Index {
+public extension StringProtocol where Index == String.Index {
     /// check if strings are same using localized, case insensitive compare
     static func ~ (left: Self, right: Self) -> Bool {
         return left.localizedCaseInsensitiveCompare(right) == .orderedSame
@@ -13,7 +13,7 @@ extension StringProtocol where Index == String.Index {
 }
 
 infix operator ~<
-extension StringProtocol where Index == String.Index {
+public extension StringProtocol where Index == String.Index {
     /// compare strings same using localized, case insensitive compare
     static func ~< (left: Self, right: Self) -> Bool {
         return left.localizedCaseInsensitiveCompare(right) == .orderedAscending

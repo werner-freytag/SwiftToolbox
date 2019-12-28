@@ -3,7 +3,7 @@
 //
 
 import Nimble
-@testable import SwiftToolbox
+import SwiftToolbox
 import XCTest
 
 class DataMd5Test: XCTestCase {
