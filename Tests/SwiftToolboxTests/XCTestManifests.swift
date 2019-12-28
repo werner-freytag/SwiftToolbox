@@ -14,8 +14,9 @@ import XCTest
             testCase(StringProtocolCaseInsensitiveCompareTests.allTests),
             testCase(StringProtocolDiffTests.allTests),
             testCase(StringProtocolExtensionTests.allTests),
+            testCase(StringProtocolHTMLTests.allTests),
             testCase(StringProtocolPartitionTests.allTests),
-            testCase(SwiftToolboxTests.allTests),
+            testCase(ThreadExtensionTests.allTests),
         ]
     }
 #endif

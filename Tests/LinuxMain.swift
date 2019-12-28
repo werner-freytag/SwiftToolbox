@@ -14,5 +14,7 @@ tests += StringExtensionTests.allTests
 tests += StringProtocolCaseInsensitiveCompareTests.allTests
 tests += StringProtocolDiffTests.allTests
 tests += StringProtocolExtensionTests.allTests
+tests += StringProtocolHTMLTests.allTests
 tests += StringProtocolPartitionTests.allTests
+tests += ThreadExtensionTests.allTests
 XCTMain(tests)
