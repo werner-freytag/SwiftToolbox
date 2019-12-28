@@ -36,6 +36,11 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
 
         // Search pattern longer than string
         expect("Hello".match(against: "Hello_")) == 0
+
+        // Earlier matches must rank better
+        expect("Toilett Paper".match(against: "To")) > "Potatoes".match(against: "To")
+        expect("Toothpaste".match(against: "To")) > "Potatoes".match(against: "To")
+        expect("Tomatoes".match(against: "To")) > "Potatoes".match(against: "To")
     }
 
     static var allTests = [
