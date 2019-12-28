@@ -1,5 +1,7 @@
 # SwiftToolbox
 
-A collection of swift extensions.
+A collection of swift extensions. Adds a lot of new features to Foundation classes.
 
-Read the docs in the Documentation folder and the unit tests for details.
+## Documentation
+
+See unit tests for usage. Find a reference documentation in the **Documents** directory. 
