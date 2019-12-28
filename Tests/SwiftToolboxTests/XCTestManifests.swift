@@ -11,6 +11,7 @@ import XCTest
             testCase(SequenceExtensionTests.allTests),
             testCase(StringEncodingExtensionTest.allTests),
             testCase(StringExtensionTests.allTests),
+            testCase(StringLocalizationTests.allTests),
             testCase(StringProtocolCaseInsensitiveCompareTests.allTests),
             testCase(StringProtocolDiffTests.allTests),
             testCase(StringProtocolExtensionTests.allTests),

@@ -11,6 +11,7 @@ tests += LoopSequenceTests.allTests
 tests += SequenceExtensionTests.allTests
 tests += StringEncodingExtensionTest.allTests
 tests += StringExtensionTests.allTests
+tests += StringLocalizationTests.allTests
 tests += StringProtocolCaseInsensitiveCompareTests.allTests
 tests += StringProtocolDiffTests.allTests
 tests += StringProtocolExtensionTests.allTests
