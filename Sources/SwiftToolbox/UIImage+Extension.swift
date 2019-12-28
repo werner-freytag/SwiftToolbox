@@ -124,7 +124,7 @@
         }
     }
 
-    private func UIGraphicsBeginImageContext(size: CGSize, scale: CGFloat = 0) -> CGContext? {
+    public func UIGraphicsBeginImageContext(size: CGSize, scale: CGFloat = 0) -> CGContext? {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         context.translateBy(x: 0, y: size.height)
