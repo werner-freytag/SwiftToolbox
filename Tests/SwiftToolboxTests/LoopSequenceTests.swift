@@ -2,7 +2,6 @@
 //  Copyright © 2018 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
@@ -17,7 +16,7 @@ class LoopSequenceTests: XCTestCase {
             iteration += 1
         }
 
-        expect(result) == [0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
+        XCTAssertEqual(result, [0, 1, 2, 0, 1, 2, 0, 1, 2, 0])
     }
 
     static var allTests = [
