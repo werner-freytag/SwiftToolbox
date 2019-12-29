@@ -2,7 +2,6 @@
 //  Copyright © 2017 - 2018 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
@@ -118,7 +117,7 @@ class StringEncodingsExtensionTests: XCTestCase {
 
         // Result may differ between devices / OSses, so we only have this check to validate
         // the code runs
-        expect(String.availableStringEncodings).notTo(beEmpty())
+        XCTAssert(!String.availableStringEncodings.isEmpty)
     }
 
     static var allTests = [

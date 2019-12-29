@@ -2,15 +2,14 @@
 //  Copyright © 2018 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
 class EqualableTests: XCTestCase {
     func testEqualable() {
-        expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 2))) == true
-        expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 3))) == false
-        expect(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Orange(weight: 10, grade: 2))) == false
+        XCTAssertEqual(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 2)), true)
+        XCTAssertEqual(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 3)), false)
+        XCTAssertEqual(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Orange(weight: 10, grade: 2)), false)
     }
 
     static var allTests = [

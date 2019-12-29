@@ -2,7 +2,6 @@
 //  Copyright © 2018 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
@@ -33,84 +32,84 @@ class ColorExtensionTests: XCTestCase {
     )
 
     func testVisualBrightness() {
-        expect(self.colors.white.visualBrightness) == 1
-        expect(self.colors.namedGreen.visualBrightness) ≈ (0.63, 0.1)
-        expect(self.colors.rgbGreen.visualBrightness) ≈ (0.63, 0.1)
-        expect(self.colors.hsbGreen.visualBrightness) ≈ (0.63, 0.1)
+        XCTAssertEqual(colors.white.visualBrightness, 1)
+        XCTAssertEqual(colors.namedGreen.visualBrightness, 0.587)
+        XCTAssertEqual(colors.rgbGreen.visualBrightness, 0.587)
+        XCTAssertEqual(colors.hsbGreen.visualBrightness, 0.587598)
 
-        expect(self.colors.black.visualBrightness) == 0
-        expect(self.colors.namedRed.visualBrightness) ≈ (0.3, 0.1)
-        expect(self.colors.rgbRed.visualBrightness) ≈ (0.3, 0.1)
-        expect(self.colors.hsbRed.visualBrightness) ≈ (0.3, 0.1)
+        XCTAssertEqual(colors.black.visualBrightness, 0)
+        XCTAssertEqual(colors.namedRed.visualBrightness, 0.299)
+        XCTAssertEqual(colors.rgbRed.visualBrightness, 0.299)
+        XCTAssertEqual(colors.hsbRed.visualBrightness, 0.299)
 
-        expect(self.colors.namedBlue.visualBrightness) ≈ (0.11, 0.1)
-        expect(self.colors.rgbBlue.visualBrightness) ≈ (0.11, 0.1)
-        expect(self.colors.hsbBlue.visualBrightness) ≈ (0.11, 0.1)
+        XCTAssertEqual(colors.namedBlue.visualBrightness, 0.114)
+        XCTAssertEqual(colors.rgbBlue.visualBrightness, 0.114)
+        XCTAssertEqual(colors.hsbBlue.visualBrightness, 0.11634799999999974)
 
-        expect(self.colors.namedGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
-        expect(self.colors.rgbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
-        expect(self.colors.hsbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
+        XCTAssertEqual(colors.namedGrayWithAlpha.visualBrightness, 0.5)
+        XCTAssertEqual(colors.rgbGrayWithAlpha.visualBrightness, 0.5)
+        XCTAssertEqual(colors.hsbGrayWithAlpha.visualBrightness, 0.5)
     }
 
     #if os(macOS)
         func testInitRgb() {
-            expect(Color(red: 0, green: 0.5, blue: 1, alpha: 0.75)) == Color(srgbRed: 0, green: 0.5, blue: 1, alpha: 0.75)
+            XCTAssertEqual(Color(red: 0, green: 0.5, blue: 1, alpha: 0.75), Color(srgbRed: 0, green: 0.5, blue: 1, alpha: 0.75))
         }
     #endif
 
     func testWithBrightnessComponent() {
-        expect(self.colors.namedGreen.withBrightnessComponent(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
-        expect(self.colors.rgbGreen.withBrightnessComponent(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
-        expect(self.colors.hsbGreen.withBrightnessComponent(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.withBrightnessComponent(0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.withBrightnessComponent(0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.withBrightnessComponent(0.5), Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1))
     }
 
     func testWithSaturationComponent() {
-        expect(self.colors.namedGreen.withSaturationComponent(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-        expect(self.colors.rgbGreen.withSaturationComponent(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-        expect(self.colors.hsbGreen.withSaturationComponent(0.5)) == Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.withSaturationComponent(0.5), Color(red: 0.5, green: 1, blue: 0.5, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.withSaturationComponent(0.5), Color(red: 0.5, green: 1, blue: 0.5, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.withSaturationComponent(0.5), Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1))
     }
 
     func testWithHueComponent() {
-        expect(self.colors.namedGreen.withHueComponent(0)) == Color(red: 1, green: 0, blue: 0, alpha: 1)
-        expect(self.colors.rgbGreen.withHueComponent(0)) == Color(red: 1, green: 0, blue: 0, alpha: 1)
-        expect(self.colors.hsbGreen.withHueComponent(0)) == Color(hue: 0, saturation: 1, brightness: 1, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.withHueComponent(0), Color(red: 1, green: 0, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.withHueComponent(0), Color(red: 1, green: 0, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.withHueComponent(0), Color(hue: 0, saturation: 1, brightness: 1, alpha: 1))
     }
 
     func testDarken() {
-        expect(self.colors.namedGreen.darken(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
-        expect(self.colors.rgbGreen.darken(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
-        expect(self.colors.hsbGreen.darken(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.darken(0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.darken(0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.darken(0.5), Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1))
 
         // There is no blacker than black
-        expect(Color(red: 0, green: 0, blue: 0, alpha: 1).darken(0.5)) == Color(red: 0, green: 0, blue: 0, alpha: 1)
+        XCTAssertEqual(Color(red: 0, green: 0, blue: 0, alpha: 1).darken(0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
     }
 
     func testLighten() {
-        expect(self.colors.namedGreen.darken(0.5).lighten(0.5)) == Color(red: 0, green: 0.75, blue: 0, alpha: 1)
-        expect(self.colors.rgbGreen.darken(0.5).lighten(0.5)) == Color(red: 0, green: 0.75, blue: 0, alpha: 1)
-        expect(self.colors.hsbGreen.darken(0.5).lighten(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.75, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.darken(0.5).lighten(0.5), Color(red: 0, green: 0.75, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.darken(0.5).lighten(0.5), Color(red: 0, green: 0.75, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.darken(0.5).lighten(0.5), Color(hue: 0.333, saturation: 1, brightness: 0.75, alpha: 1))
 
         // do not overflow
-        expect(self.colors.namedGreen.lighten(0.5)) == Color(red: 0, green: 1, blue: 0, alpha: 1)
-        expect(self.colors.rgbGreen.lighten(0.5)) == Color(red: 0, green: 1, blue: 0, alpha: 1)
-        expect(self.colors.hsbGreen.lighten(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 1, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.lighten(0.5), Color(red: 0, green: 1, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.lighten(0.5), Color(red: 0, green: 1, blue: 0, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.lighten(0.5), Color(hue: 0.333, saturation: 1, brightness: 1, alpha: 1))
     }
 
     func testDesaturate() {
-        expect(self.colors.namedGreen.desaturate(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-        expect(self.colors.rgbGreen.desaturate(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
-        expect(self.colors.hsbGreen.desaturate(0.5)) == Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.desaturate(0.5), Color(red: 0.5, green: 1, blue: 0.5, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.desaturate(0.5), Color(red: 0.5, green: 1, blue: 0.5, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.desaturate(0.5), Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1))
     }
 
     func testSaturate() {
-        expect(self.colors.namedGreen.desaturate(0.5).saturate(0.5)) == Color(red: 0.25, green: 1, blue: 0.25, alpha: 1)
-        expect(self.colors.rgbGreen.desaturate(0.5).saturate(0.5)) == Color(red: 0.25, green: 1, blue: 0.25, alpha: 1)
-        expect(self.colors.hsbGreen.desaturate(0.5).saturate(0.5)) == Color(hue: 0.333, saturation: 0.75, brightness: 1, alpha: 1)
+        XCTAssertEqual(colors.namedGreen.desaturate(0.5).saturate(0.5), Color(red: 0.25, green: 1, blue: 0.25, alpha: 1))
+        XCTAssertEqual(colors.rgbGreen.desaturate(0.5).saturate(0.5), Color(red: 0.25, green: 1, blue: 0.25, alpha: 1))
+        XCTAssertEqual(colors.hsbGreen.desaturate(0.5).saturate(0.5), Color(hue: 0.333, saturation: 0.75, brightness: 1, alpha: 1))
 
         // do not overflow
-        expect(self.colors.namedGreen.saturate(0.5)) == colors.namedGreen
-        expect(self.colors.rgbGreen.saturate(0.5)) == colors.rgbGreen
-        expect(self.colors.hsbGreen.saturate(0.5)) == colors.hsbGreen
+        XCTAssertEqual(colors.namedGreen.saturate(0.5), colors.namedGreen)
+        XCTAssertEqual(colors.rgbGreen.saturate(0.5), colors.rgbGreen)
+        XCTAssertEqual(colors.hsbGreen.saturate(0.5), colors.hsbGreen)
     }
 
     static var allTests = [

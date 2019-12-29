@@ -2,7 +2,6 @@
 //  Copyright © 2019 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
@@ -10,13 +9,13 @@ class CollectionExtensionTests: XCTestCase {
     func testSafeSubscript() {
         let elements = [1, 2, 3]
 
-        expect(elements[safe: 0]) == 1
-        expect(elements[safe: elements.count]).to(beNil())
+        XCTAssertEqual(elements[safe: 0], 1)
+        XCTAssertNil(elements[safe: elements.count])
 
         let range = 0 ..< 3
 
-        expect(range[safe: 0]) == 0
-        expect(range[safe: 3]).to(beNil())
+        XCTAssertEqual(range[safe: 0], 0)
+        XCTAssertNil(range[safe: 3])
     }
 
     static var allTests = [

@@ -2,7 +2,6 @@
 //  Copyright © 2019 Werner Freytag. All rights reserved.
 //
 
-import Nimble
 import SwiftToolbox
 import XCTest
 
@@ -14,13 +13,13 @@ class ThreadExtensionTest: XCTestCase {
         Thread.runOnMain {
             isOnMainThread = Thread.isMainThread
         }
-        expect(isOnMainThread).to(beTrue())
+        XCTAssertTrue(isOnMainThread)
 
         isOnMainThread = false
 
         let expectation = self.expectation(description: #function)
         DispatchQueue(label: "Test").async {
-            expect(Thread.isMainThread).to(beFalse())
+            XCTAssertFalse(Thread.isMainThread)
             Thread.runOnMain {
                 isOnMainThread = Thread.isMainThread
                 expectation.fulfill()
@@ -29,7 +28,7 @@ class ThreadExtensionTest: XCTestCase {
 
         waitForExpectations(timeout: 10)
 
-        expect(isOnMainThread).to(beTrue())
+        XCTAssertTrue(isOnMainThread)
     }
 
     static var allTests = [

@@ -14,9 +14,7 @@ let package = Package(
             targets: ["SwiftToolbox"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/Quick/Nimble.git", from: "8.0.0"),
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "SwiftToolbox",
@@ -25,7 +23,7 @@ let package = Package(
         ),
         .testTarget(
             name: "SwiftToolboxTests",
-            dependencies: ["SwiftToolbox", "Nimble"],
+            dependencies: ["SwiftToolbox"],
             path: "Tests"
         ),
     ],
