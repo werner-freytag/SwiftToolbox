@@ -8,66 +8,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 15,
-      "symbol": "Array.filter(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 21,
-      "symbol": "Array.uniqueElements()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 28,
-      "symbol": "Array.removeDuplicateElements()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 32,
-      "symbol": "Array.intersection(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 36,
-      "symbol": "Array.uniqueElements()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 46,
-      "symbol": "-(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 50,
-      "symbol": "-=(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 61,
-      "symbol": "Array.commonPrefix(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Array+Extension.swift",
-      "line": 69,
-      "symbol": "Array.commonSuffix(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Collection+Extension.swift",
+      "line": 8,
+      "symbol": "Collection.subscript(safe:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
@@ -211,41 +155,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/String+Extension.swift",
-      "line": 8,
-      "symbol": "String.trimmed",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/String+Extension.swift",
-      "line": 14,
-      "symbol": "String.base64Encoded()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/String+Extension.swift",
-      "line": 20,
-      "symbol": "String.contains(_:options:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/String+Extension.swift",
-      "line": 26,
-      "symbol": "String.naturalCompare(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/String+Extension.swift",
-      "line": 32,
-      "symbol": "Array.naturalSorted()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/StringProtocol+Diff.swift",
       "line": 8,
       "symbol": "StringProtocol.diff(with:)",
@@ -312,6 +221,13 @@
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/StringProtocol+Extension.swift",
       "line": 94,
       "symbol": "StringProtocol.upperCamelCased()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/StringProtocol+HTML.swift",
+      "line": 8,
+      "symbol": "StringProtocol.escapingHTMLSpecialChars()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
