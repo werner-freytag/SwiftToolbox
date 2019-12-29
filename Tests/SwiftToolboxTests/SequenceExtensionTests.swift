@@ -3,13 +3,13 @@
 //
 
 import Nimble
-@testable import SwiftToolbox
+import SwiftToolbox
 import XCTest
 
 class SequenceExtensionTests: XCTestCase {
     func testIsEmpty() {
-        let emptySequence = 0 ..< 0
-        let nonEmptySequence = 0 ..< 10
+        let emptySequence = (0 ..< 0).makeIterator()
+        let nonEmptySequence = (0 ..< 10).makeIterator()
 
         expect(emptySequence.isEmpty) == true
         expect(nonEmptySequence.isEmpty) == false

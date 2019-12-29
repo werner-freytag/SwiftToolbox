@@ -12,12 +12,14 @@ public extension Array where Element: Equatable {
 }
 
 public extension Array where Element: NSObject {
+    /// Filter an array by an NSPredicate
     func filter(_ predicate: NSPredicate) -> [Iterator.Element] {
         return (self as NSArray).filtered(using: predicate) as! [Iterator.Element]
     }
 }
 
 public extension Array where Element: Hashable {
+    /// returns only unque elements of an array of hashable elements
     func uniqueElements() -> [Element] {
         var single = Set<Element>()
         return filter { single.insert($0).inserted }
@@ -25,14 +27,17 @@ public extension Array where Element: Hashable {
 }
 
 public extension Array where Element: Equatable {
+    /// Remove duplicate elements of an array
     mutating func removeDuplicateElements() {
         self = uniqueElements()
     }
 
+    /// Intersect array with another array
     func intersection(_ array: [Element]) -> [Element] {
         return filter { array.contains($0) }
     }
 
+    /// returns only unque elements of an array
     func uniqueElements() -> [Element] {
         var resultArray: [Element] = []
         for element in self where !resultArray.contains(element) {
@@ -43,14 +48,14 @@ public extension Array where Element: Equatable {
     }
 }
 
+/// Use "-" to substract arrays by element
 public func - <T: Equatable>(lhs: [T], rhs: [T]) -> [T] {
     return lhs.filter { !rhs.contains($0) }
 }
 
+/// Use "-=" to remove elements from an array
 public func -= <T: Equatable>(lhs: inout [T], rhs: [T]) {
-    for element in rhs {
-        lhs.remove(element)
-    }
+    lhs = lhs - rhs
 }
 
 extension Array where Element: Equatable {
@@ -58,6 +63,7 @@ extension Array where Element: Equatable {
         return prefix(Swift.min(count, other.count))
     }
 
+    /// Find common prefix with another array
     public func commonPrefix<T: RandomAccessCollection>(with other: T) -> T.SubSequence
         where T.Element == Element, T.Index == Index {
         let array = adaptLength(with: other)
@@ -66,6 +72,7 @@ extension Array where Element: Equatable {
         return other[..<prefixCnt]
     }
 
+    /// Find common suffix with another array
     public func commonSuffix<T: RandomAccessCollection>(with other: T) -> T.SubSequence
         where T.Element == Element, T.Index == Index {
         let array = reversed().adaptLength(with: other)

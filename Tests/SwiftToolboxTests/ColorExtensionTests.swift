@@ -3,7 +3,7 @@
 //
 
 import Nimble
-@testable import SwiftToolbox
+import SwiftToolbox
 import XCTest
 
 #if os(OSX)
@@ -12,14 +12,6 @@ import XCTest
 #else
     import UIKit.UIColor
     fileprivate typealias Color = UIColor
-#endif
-
-#if os(macOS)
-    extension Color {
-        public convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-            self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
-        }
-    }
 #endif
 
 class ColorExtensionTests: XCTestCase {
@@ -60,7 +52,75 @@ class ColorExtensionTests: XCTestCase {
         expect(self.colors.hsbGrayWithAlpha.visualBrightness) ≈ (0.42, 0.1)
     }
 
+    #if os(macOS)
+        func testInitRgb() {
+            expect(Color(red: 0, green: 0.5, blue: 1, alpha: 0.75)) == Color(srgbRed: 0, green: 0.5, blue: 1, alpha: 0.75)
+        }
+    #endif
+
+    func testWithBrightnessComponent() {
+        expect(self.colors.namedGreen.withBrightnessComponent(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
+        expect(self.colors.rgbGreen.withBrightnessComponent(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
+        expect(self.colors.hsbGreen.withBrightnessComponent(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1)
+    }
+
+    func testWithSaturationComponent() {
+        expect(self.colors.namedGreen.withSaturationComponent(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+        expect(self.colors.rgbGreen.withSaturationComponent(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+        expect(self.colors.hsbGreen.withSaturationComponent(0.5)) == Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1)
+    }
+
+    func testWithHueComponent() {
+        expect(self.colors.namedGreen.withHueComponent(0)) == Color(red: 1, green: 0, blue: 0, alpha: 1)
+        expect(self.colors.rgbGreen.withHueComponent(0)) == Color(red: 1, green: 0, blue: 0, alpha: 1)
+        expect(self.colors.hsbGreen.withHueComponent(0)) == Color(hue: 0, saturation: 1, brightness: 1, alpha: 1)
+    }
+
+    func testDarken() {
+        expect(self.colors.namedGreen.darken(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
+        expect(self.colors.rgbGreen.darken(0.5)) == Color(red: 0, green: 0.5, blue: 0, alpha: 1)
+        expect(self.colors.hsbGreen.darken(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.5, alpha: 1)
+
+        // There is no blacker than black
+        expect(Color(red: 0, green: 0, blue: 0, alpha: 1).darken(0.5)) == Color(red: 0, green: 0, blue: 0, alpha: 1)
+    }
+
+    func testLighten() {
+        expect(self.colors.namedGreen.darken(0.5).lighten(0.5)) == Color(red: 0, green: 0.75, blue: 0, alpha: 1)
+        expect(self.colors.rgbGreen.darken(0.5).lighten(0.5)) == Color(red: 0, green: 0.75, blue: 0, alpha: 1)
+        expect(self.colors.hsbGreen.darken(0.5).lighten(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 0.75, alpha: 1)
+
+        // do not overflow
+        expect(self.colors.namedGreen.lighten(0.5)) == Color(red: 0, green: 1, blue: 0, alpha: 1)
+        expect(self.colors.rgbGreen.lighten(0.5)) == Color(red: 0, green: 1, blue: 0, alpha: 1)
+        expect(self.colors.hsbGreen.lighten(0.5)) == Color(hue: 0.333, saturation: 1, brightness: 1, alpha: 1)
+    }
+
+    func testDesaturate() {
+        expect(self.colors.namedGreen.desaturate(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+        expect(self.colors.rgbGreen.desaturate(0.5)) == Color(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+        expect(self.colors.hsbGreen.desaturate(0.5)) == Color(hue: 0.333, saturation: 0.5, brightness: 1, alpha: 1)
+    }
+
+    func testSaturate() {
+        expect(self.colors.namedGreen.desaturate(0.5).saturate(0.5)) == Color(red: 0.25, green: 1, blue: 0.25, alpha: 1)
+        expect(self.colors.rgbGreen.desaturate(0.5).saturate(0.5)) == Color(red: 0.25, green: 1, blue: 0.25, alpha: 1)
+        expect(self.colors.hsbGreen.desaturate(0.5).saturate(0.5)) == Color(hue: 0.333, saturation: 0.75, brightness: 1, alpha: 1)
+
+        // do not overflow
+        expect(self.colors.namedGreen.saturate(0.5)) == colors.namedGreen
+        expect(self.colors.rgbGreen.saturate(0.5)) == colors.rgbGreen
+        expect(self.colors.hsbGreen.saturate(0.5)) == colors.hsbGreen
+    }
+
     static var allTests = [
         ("testVisualBrightness", testVisualBrightness),
+        ("testWithBrightnessComponent", testWithBrightnessComponent),
+        ("testWithSaturationComponent", testWithSaturationComponent),
+        ("testWithHueComponent", testWithHueComponent),
+        ("testDarken", testDarken),
+        ("testLighten", testLighten),
+        ("testDesaturate", testDesaturate),
+        ("testSaturate", testSaturate),
     ]
 }
