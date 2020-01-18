@@ -23,10 +23,16 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
     func testMatchAgainst() {
         XCTAssertEqual("Hello".match(against: "hello"), 1)
         XCTAssertEqual("Hello".match(against: "hello", options: []), 0) // Case sensitive
-        XCTAssertEqual("Hello_".match(against: "hello"), 0.8333333)
-        XCTAssertEqual("H_ello".match(against: "hello"), 0.5) // Earlier matches rank better
-        XCTAssertEqual("_Hello".match(against: "hello"), 0.41666666)
-        XCTAssertEqual("__Hello".match(against: "hello"), 0.23809525)
+
+        XCTAssertNotEqual("Hello_".match(against: "hello"), 0)
+        XCTAssertNotEqual("H_ello".match(against: "hello"), 0)
+        XCTAssertNotEqual("_Hello".match(against: "hello"), 0)
+        XCTAssertNotEqual("__Hello".match(against: "hello"), 0)
+
+        // Earlier matches rank better
+        XCTAssertGreaterThan("Hello_".match(against: "hello"), "H_ello".match(against: "hello"))
+        XCTAssertGreaterThan("H_ello".match(against: "hello"), "_Hello".match(against: "hello"))
+        XCTAssertGreaterThan("_Hello".match(against: "hello"), "__Hello".match(against: "hello"))
 
         // Special cases: Empty strings
         XCTAssertEqual("".match(against: "hello"), 0)
@@ -40,6 +46,7 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         XCTAssertGreaterThan("Toilett Paper".match(against: "To"), "Potatoes".match(against: "To"))
         XCTAssertGreaterThan("Toothpaste".match(against: "To"), "Potatoes".match(against: "To"))
         XCTAssertGreaterThan("Tomatoes".match(against: "To"), "Potatoes".match(against: "To"))
+        XCTAssertGreaterThan("Algifor forte 400".match(against: "a"), "Padma 28".match(against: "a"))
     }
 
     static var allTests = [

@@ -25,6 +25,7 @@ public extension StringProtocol {
     /// the result is 0. If strings are same, 1 is returned
     func match(against search: String, options mask: String.CompareOptions = [.caseInsensitive, .diacriticInsensitive, .widthInsensitive]) -> Float {
         guard !isEmpty else { return search.isEmpty ? 1 : 0 }
+        guard !search.isEmpty else { return 0 }
         guard count >= search.count else { return 0 }
 
         var similarities: Float = 0
@@ -36,6 +37,6 @@ public extension StringProtocol {
             offset = range.upperBound
         }
 
-        return similarities / Float(count)
+        return similarities / Float(search.count)
     }
 }
