@@ -92,11 +92,11 @@
                 targetSize = size
 
             case .scaleAspectFit:
-                let factor = min(size.width / self.size.width / 2, size.height / self.size.height)
+                let factor = min(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
 
             case .scaleAspectFill:
-                let factor = max(size.width / self.size.width / 2, size.height / self.size.height)
+                let factor = max(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
 
             default:
