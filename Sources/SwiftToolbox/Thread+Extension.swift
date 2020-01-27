@@ -6,13 +6,11 @@ import Foundation
 
 extension Thread {
     /// run a block on main thread, but only use dispatch queue if necessary
-    public static func runOnMain(block: () -> Void) {
-        if Thread.isMainThread {
-            block()
-        } else {
-            DispatchQueue.main.sync {
-                block()
-            }
-        }
+    @discardableResult public static func runOnMain<T>(block: () -> T) -> T {
+        guard !Thread.isMainThread else { return block() }
+
+        var result: T!
+        DispatchQueue.main.sync { result = block() }
+        return result
     }
 }
