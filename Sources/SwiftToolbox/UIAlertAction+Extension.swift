@@ -2,7 +2,7 @@
 //  Copyright © 2020 Werner Freytag. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS)
 
     import UIKit
 
