@@ -91,6 +91,7 @@
             case scaleToFill
             case scaleAspectFit
             case scaleAspectFill
+            case center
         }
 
         /// Create a resized version of an image
@@ -113,6 +114,9 @@
             case .scaleAspectFill:
                 let factor = max(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
+                
+            case .center:
+                targetSize = self.size
             }
 
             let center = CGPoint(x: (size.width - targetSize.width) / 2, y: (size.height - targetSize.height) / 2)
