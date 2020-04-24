@@ -114,7 +114,7 @@
             case .scaleAspectFill:
                 let factor = max(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
-                
+
             case .center:
                 targetSize = self.size
             }

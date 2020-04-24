@@ -18,13 +18,11 @@ let package = Package(
     targets: [
         .target(
             name: "SwiftToolbox",
-            dependencies: [],
-            path: "Sources"
+            dependencies: []
         ),
         .testTarget(
             name: "SwiftToolboxTests",
-            dependencies: ["SwiftToolbox"],
-            path: "Tests"
+            dependencies: ["SwiftToolbox"]
         ),
     ],
     swiftLanguageVersions: [.v5]

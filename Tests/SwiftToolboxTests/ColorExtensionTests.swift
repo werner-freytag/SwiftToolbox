@@ -33,22 +33,25 @@ class ColorExtensionTests: XCTestCase {
 
     func testVisualBrightness() {
         XCTAssertEqual(colors.white.visualBrightness, 1)
-        XCTAssertEqual(colors.namedGreen.visualBrightness, 0.587)
-        XCTAssertEqual(colors.rgbGreen.visualBrightness, 0.587)
-        XCTAssertEqual(colors.hsbGreen.visualBrightness, 0.587598)
+        
+        #if os(iOS) // iOS and Mac have different color specs
+            XCTAssertEqual(colors.namedGreen.visualBrightness, 0.587)
+            XCTAssertEqual(colors.rgbGreen.visualBrightness, 0.587)
+            XCTAssertEqual(colors.hsbGreen.visualBrightness, 0.587598)
 
-        XCTAssertEqual(colors.black.visualBrightness, 0)
-        XCTAssertEqual(colors.namedRed.visualBrightness, 0.299)
-        XCTAssertEqual(colors.rgbRed.visualBrightness, 0.299)
-        XCTAssertEqual(colors.hsbRed.visualBrightness, 0.299)
+            XCTAssertEqual(colors.black.visualBrightness, 0)
+            XCTAssertEqual(colors.namedRed.visualBrightness, 0.299)
+            XCTAssertEqual(colors.rgbRed.visualBrightness, 0.299)
+            XCTAssertEqual(colors.hsbRed.visualBrightness, 0.299)
 
-        XCTAssertEqual(colors.namedBlue.visualBrightness, 0.114)
-        XCTAssertEqual(colors.rgbBlue.visualBrightness, 0.114)
-        XCTAssertEqual(colors.hsbBlue.visualBrightness, 0.11634799999999974)
+            XCTAssertEqual(colors.namedBlue.visualBrightness, 0.114)
+            XCTAssertEqual(colors.rgbBlue.visualBrightness, 0.114)
+            XCTAssertEqual(colors.hsbBlue.visualBrightness, 0.11634799999999974)
 
-        XCTAssertEqual(colors.namedGrayWithAlpha.visualBrightness, 0.5)
-        XCTAssertEqual(colors.rgbGrayWithAlpha.visualBrightness, 0.5)
-        XCTAssertEqual(colors.hsbGrayWithAlpha.visualBrightness, 0.5)
+            XCTAssertEqual(colors.namedGrayWithAlpha.visualBrightness, 0.5)
+            XCTAssertEqual(colors.rgbGrayWithAlpha.visualBrightness, 0.5)
+            XCTAssertEqual(colors.hsbGrayWithAlpha.visualBrightness, 0.5)
+        #endif
     }
 
     #if os(macOS)
