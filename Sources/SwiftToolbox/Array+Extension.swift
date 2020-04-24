@@ -110,21 +110,39 @@ extension Array where Element: Equatable {
     }
 }
 
+// MARK: Search and replace
+
 extension Array where Element: Equatable {
-    /// Returns the non-overlapping positions of the given slice in the array
-    public func find(slice: ArraySlice<Element>) -> [Int] {
-        var foundOffsets: [Int] = []
+    /// Returns the indices of the given slice in the array, non-overlapping
+    public func indices(of slice: ArraySlice<Element>) -> [Int] {
+        var indices: [Int] = []
         let sliceLength = slice.count
         var fromOffset = 0
         while fromOffset <= count - sliceLength {
             if self[fromOffset ..< fromOffset + sliceLength] == slice {
-                foundOffsets.append(fromOffset)
+                indices.append(fromOffset)
                 fromOffset += sliceLength
             } else {
                 fromOffset += 1
             }
         }
 
-        return foundOffsets
+        return indices
+    }
+
+    /// Replace a slice in one array with another slice
+    public func replacing(_ search: ArraySlice<Element>, with replacement: ArraySlice<Element>) -> [Element] {
+        var result: [Element] = []
+
+        var fromOffset = 0
+        for index in indices(of: search) {
+            result.append(contentsOf: self[fromOffset ..< index])
+            fromOffset = index + search.count
+            result.append(contentsOf: replacement)
+        }
+
+        result.append(contentsOf: self[fromOffset...])
+
+        return result
     }
 }

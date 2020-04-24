@@ -54,10 +54,19 @@ class ArrayExtensionTests: XCTestCase {
     }
 
     func testFindSlice() {
-        XCTAssertEqual(["A", "B", "A", "A", "C"].find(slice: ["A"]), [0, 2, 3])
-        XCTAssertEqual(["A", "B", "A", "A", "B", "C"].find(slice: ["A", "B"]), [0, 3])
-        XCTAssertEqual(["Hello", "World", "Hello"].find(slice: ["Hello"]), [0, 2])
-        XCTAssertEqual(["Hello", "World", "Hello"].find(slice: ["hello"]), [])
+        XCTAssertEqual(["A", "B", "A", "A", "C"].indices(of: ["A"]), [0, 2, 3])
+        XCTAssertEqual(["A", "B", "A", "A", "B", "C"].indices(of: ["A", "B"]), [0, 3])
+        XCTAssertEqual(["A", "B", "A", "B", "A", "C"].indices(of: ["A", "B", "A"]), [0])
+        XCTAssertEqual(["Hello", "World", "Hello"].indices(of: ["Hello"]), [0, 2])
+        XCTAssertEqual(["Hello", "World", "Hello"].indices(of: ["hello"]), [])
+    }
+
+    func testReplaceSlice() {
+        XCTAssertEqual(["A", "B", "A", "A", "C"].replacing(["A"], with: ["D"]), ["D", "B", "D", "D", "C"])
+        XCTAssertEqual(["A", "B", "C", "A"].replacing(["A"], with: ["D", "E"]), ["D", "E", "B", "C", "D", "E"])
+        XCTAssertEqual(["A", "B", "C", "A", "B"].replacing(["A", "B"], with: ["D"]), ["D", "C", "D"])
+        XCTAssertEqual(["A", "B", "C"].replacing(["Q"], with: ["R"]), ["A", "B", "C"])
+        XCTAssertEqual(["A", "B", "C"].replacing(["B"], with: ["A", "B"]), ["A", "A", "B", "C"])
     }
 
     func testSubtract() {
