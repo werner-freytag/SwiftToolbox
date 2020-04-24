@@ -33,7 +33,7 @@ class ColorExtensionTests: XCTestCase {
 
     func testVisualBrightness() {
         XCTAssertEqual(colors.white.visualBrightness, 1)
-        
+
         #if os(iOS) // iOS and Mac have different color specs
             XCTAssertEqual(colors.namedGreen.visualBrightness, 0.587)
             XCTAssertEqual(colors.rgbGreen.visualBrightness, 0.587)
