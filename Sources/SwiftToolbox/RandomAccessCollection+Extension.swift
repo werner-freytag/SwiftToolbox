@@ -52,7 +52,7 @@ extension RandomAccessCollection where Element: Equatable, Index == Int, SubSequ
     }
 
     /// Replace a slice in one array with another slice
-    public func replacingOccurrences(of search: SubSequence, with replacement: ArraySlice<Element>) -> [Element] {
+    public func replacingOccurrences(of search: SubSequence, with replacement: SubSequence) -> [Element] {
         var result: [Element] = []
 
         var fromOffset = startIndex
