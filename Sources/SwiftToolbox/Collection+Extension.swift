@@ -32,3 +32,22 @@ extension Collection where Element: Equatable, Index == Int {
         return self[(count - prefixCnt)...]
     }
 }
+
+extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
+    /// Returns the indices of the given slice in the array, non-overlapping
+    public func ranges(matching slice: SubSequence) -> [Range<Index>] {
+        var indices: [Range<Index>] = []
+        let sliceLength = slice.count
+        var fromOffset = startIndex
+        while fromOffset <= count - sliceLength {
+            if self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice {
+                indices.append(fromOffset ..< fromOffset.advanced(by: sliceLength))
+                fromOffset += sliceLength
+            } else {
+                fromOffset += 1
+            }
+        }
+
+        return indices
+    }
+}
