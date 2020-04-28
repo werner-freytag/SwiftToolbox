@@ -4,29 +4,6 @@
 
 import Foundation
 
-extension RandomAccessCollection where Index == Int, Element: Equatable {
-    private func adaptLength(with other: Self) -> SubSequence {
-        return prefix(Swift.min(count, other.count))
-    }
-
-    /// Find common prefix with another array
-    public func commonPrefix(with other: Self) -> SubSequence {
-        let array = adaptLength(with: other)
-        let prefixCnt = array.enumerated().first { $0.1 != other[$0.0] }?.offset ?? array.endIndex
-
-        return other[..<prefixCnt]
-    }
-
-    /// Find common suffix with another array
-    public func commonSuffix(with other: Self) -> SubSequence {
-        let array = reversed().adaptLength(with: other.reversed())
-        let cnt = other.count
-        let prefixCnt = array.enumerated().first { $0.1 != other[cnt - $0.0 - 1] }?.offset ?? array.endIndex
-
-        return other[(cnt - prefixCnt)...]
-    }
-}
-
 extension RandomAccessCollection where Element: Equatable, Index == Int, SubSequence: Equatable {
     /// Returns the smallest slice of elements that can be repeated to form the array
     public var leastCommonSlice: SubSequence? {
