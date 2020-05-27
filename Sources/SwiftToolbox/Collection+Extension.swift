@@ -35,7 +35,7 @@ extension Collection where Element: Equatable, Index == Int {
 
 extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
     /// Returns the indices of the given slice in the array, non-overlapping
-    public func ranges(matching slice: SubSequence) -> [Range<Index>] {
+    public func ranges(of slice: SubSequence) -> [Range<Index>] {
         var indices: [Range<Index>] = []
         let sliceLength = slice.count
         var fromOffset = startIndex

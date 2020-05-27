@@ -56,7 +56,7 @@ extension StringProtocol where Index == String.Index {
     ///   - options: A mask specifying search options.
     /// - Returns: A sequence providing the substring for all matches
     public func substrings(matching searchString: String, options: String.CompareOptions = []) -> AnySequence<Self.SubSequence> {
-        return AnySequence(ranges(matching: searchString, options: options)
+        return AnySequence(ranges(of: searchString, options: options)
             .lazy
             .map { self[$0] })
     }
@@ -67,7 +67,7 @@ extension StringProtocol where Index == String.Index {
     ///   - searchString: The string to search for.
     ///   - options: A mask specifying search options.
     /// - Returns: A sequence providing the range for all matches
-    public func ranges(matching searchString: String, options: String.CompareOptions = []) -> AnySequence<Range<String.Index>> {
+    public func ranges(of searchString: String, options: String.CompareOptions = []) -> AnySequence<Range<String.Index>> {
         return AnySequence(sequence(state: startIndex) { offset in
             guard offset < self.endIndex,
                 let foundRange = self.range(of: searchString, options: options, range: offset ..< self.endIndex)

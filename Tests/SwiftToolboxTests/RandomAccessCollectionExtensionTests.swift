@@ -14,11 +14,11 @@ class RandomAccessCollectionExtensionTests: XCTestCase {
     }
 
     func testFindSlice() {
-        XCTAssertEqual(["A", "B", "A", "A", "C"].ranges(matching: ["A"]), [0 ..< 1, 2 ..< 3, 3 ..< 4])
-        XCTAssertEqual(["A", "B", "A", "A", "B", "C"].ranges(matching: ["A", "B"]), [0 ..< 2, 3 ..< 5])
-        XCTAssertEqual(["A", "B", "A", "B", "A", "C"].ranges(matching: ["A", "B", "A"]), [0 ..< 3])
-        XCTAssertEqual(["Hello", "World", "Hello"].ranges(matching: ["Hello"]), [0 ..< 1, 2 ..< 3])
-        XCTAssertEqual(["Hello", "World", "Hello"].ranges(matching: ["hello"]), [])
+        XCTAssertEqual(["A", "B", "A", "A", "C"].ranges(of: ["A"]), [0 ..< 1, 2 ..< 3, 3 ..< 4])
+        XCTAssertEqual(["A", "B", "A", "A", "B", "C"].ranges(of: ["A", "B"]), [0 ..< 2, 3 ..< 5])
+        XCTAssertEqual(["A", "B", "A", "B", "A", "C"].ranges(of: ["A", "B", "A"]), [0 ..< 3])
+        XCTAssertEqual(["Hello", "World", "Hello"].ranges(of: ["Hello"]), [0 ..< 1, 2 ..< 3])
+        XCTAssertEqual(["Hello", "World", "Hello"].ranges(of: ["hello"]), [])
     }
 
     func testReplaceSlice() {

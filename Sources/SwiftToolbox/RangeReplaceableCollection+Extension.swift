@@ -8,7 +8,7 @@ extension RangeReplaceableCollection where Element: Equatable, Index == Int, Sub
     /// Replace a slice in one collection with another one
     public func replacingOccurrences(of search: SubSequence, with replacement: SubSequence) -> Self {
         var result = self
-        for range in ranges(matching: search).reversed() {
+        for range in ranges(of: search).reversed() {
             result.replaceSubrange(range, with: replacement)
         }
 
