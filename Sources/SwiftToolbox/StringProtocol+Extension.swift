@@ -55,7 +55,7 @@ extension StringProtocol where Index == String.Index {
     ///   - searchString: The string to search for.
     ///   - options: A mask specifying search options.
     /// - Returns: A sequence providing the substring for all matches
-    public func substrings(matching searchString: String, options: String.CompareOptions = []) -> AnySequence<Self.SubSequence> {
+    public func substrings(of searchString: String, options: String.CompareOptions = []) -> AnySequence<Self.SubSequence> {
         return AnySequence(ranges(of: searchString, options: options)
             .lazy
             .map { self[$0] })
@@ -86,7 +86,7 @@ extension StringProtocol where Index == String.Index {
 
 extension StringProtocol where Index == String.Index {
     public func findWords() -> AnySequence<Self.SubSequence> {
-        return substrings(matching: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
+        return substrings(of: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
     }
 }
 
