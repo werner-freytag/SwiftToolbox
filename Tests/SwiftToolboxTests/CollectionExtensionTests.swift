@@ -36,9 +36,31 @@ class CollectionExtensionTests: XCTestCase {
         XCTAssertEqual(Array([].commonSuffix(with: ["A", "B", "C"])), [])
     }
 
+    func testFindSlice() {
+        XCTAssertEqual(["A", "B", "A", "A", "C"].ranges(of: ["A"]), [0 ..< 1, 2 ..< 3, 3 ..< 4])
+        XCTAssertEqual(["A", "B", "A", "A", "B", "C"].ranges(of: ["A", "B"]), [0 ..< 2, 3 ..< 5])
+        XCTAssertEqual(["A", "B", "A", "B", "A", "C"].ranges(of: ["A", "B", "A"]), [0 ..< 3])
+        XCTAssertEqual(["Hello", "World", "Hello"].ranges(of: ["Hello"]), [0 ..< 1, 2 ..< 3])
+        XCTAssertEqual(["Hello", "World", "Hello"].ranges(of: ["hello"]), [])
+    }
+
+    func testAllSlices() {
+        XCTAssertEqual(Array([1, 2, 3, 1, 2].allSlices), [
+            [1], [1, 2], [1, 2, 3], [1, 2, 3, 1], [1, 2, 3, 1, 2],
+            [2], [2, 3], [2, 3, 1], [2, 3, 1, 2],
+            [3], [3, 1], [3, 1, 2],
+            [1], [1, 2],
+            [2],
+        ])
+
+        XCTAssertEqual(Array([Int]([]).allSlices), [])
+    }
+
     static var allTests = [
         ("testCommonPrefix", testCommonPrefix),
         ("testCommonSuffix", testCommonSuffix),
         ("testSafeSubscript", testSafeSubscript),
+        ("testFindSlice", testFindSlice),
+        ("testAllSlices", testAllSlices),
     ]
 }

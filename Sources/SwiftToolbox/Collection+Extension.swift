@@ -51,3 +51,12 @@ extension Collection where Element: Equatable, Index == Int, SubSequence: Equata
         return indices
     }
 }
+
+extension Collection where Index: SignedInteger, Index.Stride: SignedInteger {
+    /// Returns sequence of all possible slices of the collection
+    public var allSlices: AnySequence<SubSequence> {
+        AnySequence((startIndex ..< Swift.max(startIndex, endIndex)).flatMap { lowerBound in
+            (lowerBound.advanced(by: 1) ... endIndex).map { upperBound in self[lowerBound ..< upperBound] }
+        })
+    }
+}

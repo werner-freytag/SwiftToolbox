@@ -11,3 +11,7 @@ public extension Sequence {
         return iterator.next() == nil
     }
 }
+
+func cartesian<T1: Sequence, T2: Sequence>(lhs: T1, rhs: T2) -> AnySequence<(T1.Element, T2.Element)> {
+    AnySequence(lhs.lazy.flatMap { x in rhs.lazy.map { y in (x, y) } })
+}
