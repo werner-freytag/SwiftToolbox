@@ -34,21 +34,33 @@ extension Collection where Element: Equatable, Index == Int {
 }
 
 extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
-    /// Returns the indices of the given slice in the array, non-overlapping
     public func ranges(of slice: SubSequence) -> [Range<Index>] {
-        var indices: [Range<Index>] = []
+        Array(rangeIterator(of: slice))
+    }
+
+    /// Returns the ranges of the given slice in the array, non-overlapping
+    public func firstRange(of slice: SubSequence) -> Range<Index>? {
+        for range in rangeIterator(of: slice) { return range }
+        return nil
+    }
+
+    func rangeIterator(of slice: SubSequence) -> AnyIterator<Range<Index>> {
         let sliceLength = slice.count
         var fromOffset = startIndex
-        while fromOffset <= count - sliceLength {
-            if self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice {
-                indices.append(fromOffset ..< fromOffset.advanced(by: sliceLength))
-                fromOffset += sliceLength
-            } else {
-                fromOffset += 1
-            }
-        }
 
-        return indices
+        return AnyIterator {
+            while fromOffset <= self.count - sliceLength {
+                guard self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice else {
+                    fromOffset += 1
+                    continue
+                }
+
+                defer { fromOffset += sliceLength }
+                return fromOffset ..< fromOffset.advanced(by: sliceLength)
+            }
+
+            return nil
+        }
     }
 }
 
