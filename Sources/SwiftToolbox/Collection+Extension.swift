@@ -10,26 +10,42 @@ public extension Collection {
     }
 }
 
-extension Collection where Element: Equatable, Index == Int {
-    private func adaptLength<T: Collection>(with other: T) -> SubSequence {
-        return prefix(Swift.min(count, other.count))
+extension Collection {
+    /// Find common prefix with another collection
+    public func commonPrefix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+        guard startIndex == other.startIndex else { return self[startIndex ..< startIndex] }
+
+        let endIndex: Self.Index = {
+            guard let endIndex = self.indices.first(where: { index in
+                guard index < other.endIndex else { return true }
+                return !isEqual(self[index], other[index])
+            }) else {
+                return Swift.min(self.endIndex, other.endIndex)
+            }
+
+            return endIndex
+        }()
+
+        return self[..<endIndex]
     }
 
-    /// Find common prefix with another array
-    public func commonPrefix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Int {
-        let array = adaptLength(with: other)
-        let prefixCnt = array.enumerated().first { $0.1 != other[$0.0] }?.offset ?? array.endIndex
+    /// Find common suffix with another collection
+    public func commonSuffix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+        let length = reversed().commonPrefix(with: other.reversed(), isEqual: isEqual).count
 
-        return self[..<prefixCnt]
+        return self[index(startIndex, offsetBy: count - length)...]
+    }
+}
+
+extension Collection where Element: Equatable {
+    /// Find common prefix with another collection
+    public func commonPrefix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+        return commonPrefix(with: other, isEqual: ==)
     }
 
-    /// Find common suffix with another array
-    public func commonSuffix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Int {
-        let array = reversed().adaptLength(with: other)
-        let cnt = other.count
-        let prefixCnt = array.enumerated().first { $0.1 != other[cnt - $0.0 - 1] }?.offset ?? array.count
-
-        return self[(count - prefixCnt)...]
+    /// Find common suffix with another collection
+    public func commonSuffix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+        return commonSuffix(with: other, isEqual: ==)
     }
 }
 
