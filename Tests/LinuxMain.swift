@@ -7,6 +7,7 @@ tests += ArrayExtensionTests.allTests
 tests += ColorExtensionTests.allTests
 tests += CollectionExtensionTests.allTests
 tests += EqualableTests.allTests
+tests += FunctionsTests.allTests
 tests += LoopSequenceTests.allTests
 tests += SequenceExtensionTests.allTests
 tests += StringEncodingExtensionTest.allTests

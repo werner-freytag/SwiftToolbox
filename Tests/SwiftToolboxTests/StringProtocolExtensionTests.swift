@@ -53,8 +53,8 @@ class StringProtocolExtensionTests: XCTestCase {
     }
 
     func testSubstringsMatching() {
-        XCTAssertEqual(Array("Hello".substrings(matching: ".[eo]", options: .regularExpression)), ["He", "lo"])
-        XCTAssertEqual(Array("Hello".substrings(matching: ".*?", options: .regularExpression)), ["", "", "", "", ""])
+        XCTAssertEqual(Array("Hello".substrings(of: ".[eo]", options: .regularExpression)), ["He", "lo"])
+        XCTAssertEqual(Array("Hello".substrings(of: ".*?", options: .regularExpression)), ["", "", "", "", ""])
     }
 
     func testPathExtension() {

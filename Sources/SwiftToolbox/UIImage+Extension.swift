@@ -2,10 +2,11 @@
 //  Copyright © 2017-2019 Werner Freytag. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
-    import QuartzCore
+#if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit
+#endif
 
+#if os(iOS) || os(tvOS) || os(watchOS)
     public extension UIImage {
         fileprivate convenience init?(image: UIImage?) {
             guard let image = image, let cgImage = image.cgImage else { return nil }
@@ -25,7 +26,11 @@
 
             self.init(image: UIGraphicsGetImageFromCurrentImageContext())
         }
+    }
+#endif
 
+#if os(iOS)
+    public extension UIImage {
         /// Create an image with the size and bitmap content of a view
         convenience init?(contentsOf view: UIView) {
             self.init(contentsOf: view, in: view.bounds)
@@ -46,7 +51,11 @@
 
             self.init(image: UIGraphicsGetImageFromCurrentImageContext())
         }
+    }
+#endif
 
+#if os(iOS) || os(tvOS) || os(watchOS)
+    public extension UIImage {
         /// Create a tinted version of an image
         func colored(with color: UIColor) -> UIImage? {
             guard let context = UIGraphicsBeginImageContext(size: size, scale: scale) else { return nil }
@@ -78,8 +87,15 @@
             return UIGraphicsGetImageFromCurrentImageContext()
         }
 
+        enum ContentMode {
+            case scaleToFill
+            case scaleAspectFit
+            case scaleAspectFill
+            case center
+        }
+
         /// Create a resized version of an image
-        func resized(to size: CGSize, mode: UIView.ContentMode = .scaleAspectFill) -> UIImage? {
+        func resized(to size: CGSize, mode: ContentMode = .scaleAspectFill) -> UIImage? {
             guard self.size != size else { return self }
 
             guard let context = UIGraphicsBeginImageContext(size: size, scale: scale) else { return nil }
@@ -92,15 +108,15 @@
                 targetSize = size
 
             case .scaleAspectFit:
-                let factor = min(size.width / self.size.width / 2, size.height / self.size.height)
+                let factor = min(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
 
             case .scaleAspectFill:
-                let factor = max(size.width / self.size.width / 2, size.height / self.size.height)
+                let factor = max(size.width / self.size.width, size.height / self.size.height)
                 targetSize = CGSize(width: factor * self.size.width, height: factor * self.size.height)
 
-            default:
-                preconditionFailure("Mode not supported")
+            case .center:
+                targetSize = self.size
             }
 
             let center = CGPoint(x: (size.width - targetSize.width) / 2, y: (size.height - targetSize.height) / 2)

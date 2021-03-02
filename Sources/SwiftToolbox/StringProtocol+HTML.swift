@@ -4,8 +4,8 @@
 
 import Foundation
 
-extension StringProtocol where Index == String.Index {
-    public func escapingHTMLSpecialChars() -> String {
+public extension StringProtocol where Index == String.Index {
+    func escapingHTMLSpecialChars() -> String {
         return replacingOccurrences(of: "&", with: "&amp;")
             .replacingOccurrences(of: "\"", with: "&quot;")
             .replacingOccurrences(of: "<", with: "&lt;")

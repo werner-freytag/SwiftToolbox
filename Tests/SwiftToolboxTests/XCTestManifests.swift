@@ -7,6 +7,7 @@ import XCTest
             testCase(CollectionExtensionTests.allTests),
             testCase(ColorExtensionTests.allTests),
             testCase(EqualableTests.allTests),
+            testCase(FunctionsTests.allTests),
             testCase(LoopSequenceTests.allTests),
             testCase(SequenceExtensionTests.allTests),
             testCase(StringEncodingExtensionTest.allTests),
