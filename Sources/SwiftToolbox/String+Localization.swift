@@ -4,9 +4,9 @@
 
 import Foundation
 
-extension String {
+public extension String {
     /// Shortcut for NSLocalizedString
-    public var localized: String {
+    var localized: String {
         return NSLocalizedString(self, comment: "")
     }
 }

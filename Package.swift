@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftToolbox",
     platforms: [
-        .macOS(.v10_10), .iOS(.v8),
+        .macOS(.v10_10), .iOS(.v9),
     ],
     products: [
         .library(
