@@ -15,6 +15,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Collection+Extension.swift",
+      "line": 53,
+      "symbol": "Collection.ranges(of:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Color+Extension.swift",
       "line": 9,
       "symbol": "Color",
@@ -148,10 +155,31 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Functions.swift",
+      "line": 7,
+      "symbol": "CastError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Functions.swift",
+      "line": 8,
+      "symbol": "CastError.notCastable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/LoopSequence.swift",
       "line": 11,
       "symbol": "LoopSequence.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Sequence+Extension.swift",
+      "line": 15,
+      "symbol": "cartesian(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
