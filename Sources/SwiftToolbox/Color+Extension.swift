@@ -18,7 +18,6 @@ import CoreGraphics
             self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
         }
     }
-
 #else
     private typealias HSBComponents = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
 
@@ -47,6 +46,17 @@ import CoreGraphics
         }
     }
 #endif
+
+public extension Color {
+    convenience init(hex: Int) {
+        let components = (
+            CGFloat((hex >> 16) & 0xFF) / 255,
+            CGFloat((hex >> 08) & 0xFF) / 255,
+            CGFloat((hex >> 00) & 0xFF) / 255
+        )
+        self.init(red: components.0, green: components.1, blue: components.2, alpha: 1)
+    }
+}
 
 public extension Color {
     private typealias RGBComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
