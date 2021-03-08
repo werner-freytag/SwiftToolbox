@@ -10,9 +10,9 @@ public extension Collection {
     }
 }
 
-extension Collection {
+public extension Collection {
     /// Find common prefix with another collection
-    public func commonPrefix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+    func commonPrefix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
         guard startIndex == other.startIndex else { return self[startIndex ..< startIndex] }
 
         let endIndex: Self.Index = {
@@ -30,37 +30,37 @@ extension Collection {
     }
 
     /// Find common suffix with another collection
-    public func commonSuffix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+    func commonSuffix<T: Collection>(with other: T, isEqual: (T.Element, T.Element) -> Bool) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
         let length = reversed().commonPrefix(with: other.reversed(), isEqual: isEqual).count
 
         return self[index(startIndex, offsetBy: count - length)...]
     }
 }
 
-extension Collection where Element: Equatable {
+public extension Collection where Element: Equatable {
     /// Find common prefix with another collection
-    public func commonPrefix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+    func commonPrefix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
         return commonPrefix(with: other, isEqual: ==)
     }
 
     /// Find common suffix with another collection
-    public func commonSuffix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
+    func commonSuffix<T: Collection>(with other: T) -> SubSequence where T.Element == Self.Element, T.Index == Self.Index {
         return commonSuffix(with: other, isEqual: ==)
     }
 }
 
-extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
-    public func ranges(of slice: SubSequence) -> [Range<Index>] {
+public extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
+    func ranges(of slice: SubSequence) -> [Range<Index>] {
         Array(rangeIterator(of: slice))
     }
 
     /// Returns the ranges of the given slice in the array, non-overlapping
-    public func firstRange(of slice: SubSequence) -> Range<Index>? {
+    func firstRange(of slice: SubSequence) -> Range<Index>? {
         for range in rangeIterator(of: slice) { return range }
         return nil
     }
 
-    func rangeIterator(of slice: SubSequence) -> AnyIterator<Range<Index>> {
+    internal func rangeIterator(of slice: SubSequence) -> AnyIterator<Range<Index>> {
         let sliceLength = slice.count
         var fromOffset = startIndex
 
@@ -80,9 +80,9 @@ extension Collection where Element: Equatable, Index == Int, SubSequence: Equata
     }
 }
 
-extension Collection where Index: SignedInteger, Index.Stride: SignedInteger {
+public extension Collection where Index: SignedInteger, Index.Stride: SignedInteger {
     /// Returns sequence of all possible slices of the collection
-    public var allSlices: AnySequence<SubSequence> {
+    var allSlices: AnySequence<SubSequence> {
         AnySequence((startIndex ..< Swift.max(startIndex, endIndex)).flatMap { lowerBound in
             (lowerBound.advanced(by: 1) ... endIndex).map { upperBound in self[lowerBound ..< upperBound] }
         })

@@ -13,8 +13,8 @@ import CoreGraphics
 #endif
 
 #if os(macOS)
-    extension Color {
-        public convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    public extension Color {
+        convenience init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
             self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
         }
     }
@@ -22,7 +22,7 @@ import CoreGraphics
 #else
     private typealias HSBComponents = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
 
-    extension Color {
+    public extension Color {
         private var hsbComponents: HSBComponents {
             var components = HSBComponents(hue: 0, saturation: 0, brightness: 0, alpha: 0)
             getHue(&components.hue, saturation: &components.saturation, brightness: &components.brightness, alpha: &components.alpha)
@@ -30,19 +30,19 @@ import CoreGraphics
             return components
         }
 
-        public var hueComponent: CGFloat {
+        var hueComponent: CGFloat {
             return hsbComponents.hue
         }
 
-        public var saturationComponent: CGFloat {
+        var saturationComponent: CGFloat {
             return hsbComponents.saturation
         }
 
-        public var brightnessComponent: CGFloat {
+        var brightnessComponent: CGFloat {
             return hsbComponents.brightness
         }
 
-        public var alphaComponent: CGFloat {
+        var alphaComponent: CGFloat {
             return hsbComponents.alpha
         }
     }

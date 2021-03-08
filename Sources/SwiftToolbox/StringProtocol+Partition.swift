@@ -4,11 +4,11 @@
 
 import Foundation
 
-extension StringProtocol where Index == String.Index {
+public extension StringProtocol where Index == String.Index {
     /**
      Returns an array with all possibilities to split the string.
      */
-    public func partition() -> [[Self.SubSequence]] {
+    func partition() -> [[Self.SubSequence]] {
         guard !isEmpty else { return [] }
 
         var memoized = [Self.SubSequence: [[Self.SubSequence]]]()

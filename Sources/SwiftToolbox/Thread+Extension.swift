@@ -4,9 +4,9 @@
 
 import Foundation
 
-extension Thread {
+public extension Thread {
     /// run a block on main thread, but only use dispatch queue if necessary
-    @discardableResult public static func runOnMain<T>(block: () -> T) -> T {
+    @discardableResult static func runOnMain<T>(block: () -> T) -> T {
         guard !Thread.isMainThread else { return block() }
 
         var result: T!
