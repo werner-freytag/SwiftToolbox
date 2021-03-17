@@ -48,13 +48,13 @@ import CoreGraphics
 #endif
 
 public extension Color {
-    convenience init(hex: Int) {
+    convenience init(hex: Int, alpha: CGFloat = 1) {
         let components = (
             CGFloat((hex >> 16) & 0xFF) / 255,
             CGFloat((hex >> 08) & 0xFF) / 255,
             CGFloat((hex >> 00) & 0xFF) / 255
         )
-        self.init(red: components.0, green: components.1, blue: components.2, alpha: 1)
+        self.init(red: components.0, green: components.1, blue: components.2, alpha: alpha)
     }
 }
 
