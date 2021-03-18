@@ -94,6 +94,10 @@ public extension StringProtocol where Index == String.Index {
     func upperCamelCased() -> String {
         return findWords().map { $0.prefix(1).uppercased() + $0.dropFirst().lowercased() }.joined()
     }
+
+    var capitalizingFirstLetter: String {
+        return prefix(1).uppercased() + dropFirst()
+    }
 }
 
 public extension StringProtocol where Index == String.Index {
