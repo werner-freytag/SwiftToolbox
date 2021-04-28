@@ -4,9 +4,9 @@
 
 import Foundation
 
-extension RandomAccessCollection where Element: Equatable, Index == Int, SubSequence: Equatable {
+public extension RandomAccessCollection where Element: Equatable, Index == Int, SubSequence: Equatable {
     /// Returns the smallest slice of elements that can be repeated to form the array
-    public var leastCommonSlice: SubSequence? {
+    var leastCommonSlice: SubSequence? {
         let count = self.count
         guard count > 1 else { return nil }
 

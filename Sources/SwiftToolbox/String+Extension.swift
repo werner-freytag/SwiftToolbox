@@ -4,23 +4,23 @@
 
 import Foundation
 
-extension String {
+public extension String {
     /// Remove whitespaces from start and end of string
-    public var trimmed: String {
+    var trimmed: String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
-extension String {
+public extension String {
     /// Find out if string contains another string
-    public func contains(_ find: String, options: String.CompareOptions = [.caseInsensitive, .widthInsensitive]) -> Bool {
+    func contains(_ find: String, options: String.CompareOptions = [.caseInsensitive, .widthInsensitive]) -> Bool {
         return range(of: find, options: options) != nil
     }
 }
 
-extension String {
+public extension String {
     /// Returns all subpatterns of the first match
-    public func match(regex: String) throws -> [String]? {
+    func match(regex: String) throws -> [String]? {
         let regex = try NSRegularExpression(pattern: regex)
         let nsString = self as NSString
 

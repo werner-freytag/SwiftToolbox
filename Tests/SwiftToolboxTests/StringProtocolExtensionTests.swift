@@ -47,6 +47,16 @@ class StringProtocolExtensionTests: XCTestCase {
         XCTAssertEqual("_camel_case".upperCamelCased(), "CamelCase")
     }
 
+    func testCapitalizingFirstLetter() {
+        XCTAssertEqual("hello".capitalizingFirstLetter, "Hello")
+        XCTAssertEqual("helloWorld".capitalizingFirstLetter, "HelloWorld")
+        XCTAssertEqual("änton".capitalizingFirstLetter, "Änton")
+        XCTAssertEqual("123test".capitalizingFirstLetter, "123test")
+        XCTAssertEqual("ÄntónÖrtel".capitalizingFirstLetter, "ÄntónÖrtel")
+        XCTAssertEqual("CAMEL".capitalizingFirstLetter, "CAMEL")
+        XCTAssertEqual("_camel_case".capitalizingFirstLetter, "_camel_case")
+    }
+
     func testRegexQuoted() {
         XCTAssertEqual("[]()\\*+?{}.|^$".regexQuoted(), "\\[\\]\\(\\)\\\\\\*\\+\\?\\{\\}\\.\\|\\^\\$")
         XCTAssertEqual("a[b]c(d)e{f}".regexQuoted(), "a\\[b\\]c\\(d\\)e\\{f\\}")

@@ -4,8 +4,8 @@
 
 import Foundation
 
-extension StringProtocol where Index == String.Index {
-    public func diff<T: StringProtocol>(with other: T) -> (range: Range<Index>, replacement: T.SubSequence, overlap: Int)? {
+public extension StringProtocol where Index == String.Index {
+    func diff<T: StringProtocol>(with other: T) -> (range: Range<Index>, replacement: T.SubSequence, overlap: Int)? {
         let prefixLength = commonPrefix(with: other).count
         guard prefixLength != count else { return nil }
 
