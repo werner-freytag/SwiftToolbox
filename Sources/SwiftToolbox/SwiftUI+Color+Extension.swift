@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(iOS 13, macOS 10.15, *)
 public extension SwiftUI.Color {
     init(hex: Int) {
         let components = (
