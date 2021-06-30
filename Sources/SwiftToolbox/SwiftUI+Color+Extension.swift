@@ -2,6 +2,7 @@
 //  Copyright © 2018 Werner Freytag. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
@@ -15,3 +16,5 @@ public extension SwiftUI.Color {
         self.init(red: components.0, green: components.1, blue: components.2)
     }
 }
+
+#endif
