@@ -88,3 +88,18 @@ public extension Collection where Index: SignedInteger, Index.Stride: SignedInte
         })
     }
 }
+
+public extension Collection {
+    /// Provides an array of ranges by subtracting excluded ranges from the collection range
+    func ranges<S: Collection>(excluding ranges: S) -> [Range<Index>] where S.Element == Range<Index> {
+        guard !ranges.isEmpty else { return [startIndex ..< endIndex] }
+
+        let dropFirst = ranges.first!.lowerBound == startIndex ? 1 : 0
+        let dropLast = ranges.reversed().first!.upperBound == endIndex ? 1 : 0
+
+        let lowerBounds = ([startIndex] + ranges.map { $0.upperBound }).dropFirst(dropFirst).dropLast(dropLast)
+        let upperBounds = (ranges.map { $0.lowerBound } + [endIndex]).dropFirst(dropFirst).dropLast(dropLast)
+
+        return zip(lowerBounds, upperBounds).map { $0 ..< $1 }
+    }
+}
