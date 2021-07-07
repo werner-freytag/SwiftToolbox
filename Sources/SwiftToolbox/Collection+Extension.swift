@@ -65,7 +65,7 @@ public extension Collection where Element: Equatable, Index == Int, SubSequence:
         var fromOffset = startIndex
 
         return AnyIterator {
-            while fromOffset <= self.count - sliceLength {
+            while fromOffset <= endIndex - sliceLength {
                 guard self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice else {
                     fromOffset += 1
                     continue

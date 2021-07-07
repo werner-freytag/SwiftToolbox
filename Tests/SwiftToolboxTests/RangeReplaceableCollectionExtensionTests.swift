@@ -15,6 +15,12 @@ class RangeReplaceableCollectionExtensionTests: XCTestCase {
         XCTAssertEqual(["A", "A"].replacingOccurrences(of: ["A"], with: []), [])
     }
 
+    func testReplaceSliceInSlice() {
+        let array = ["A", "B", "B", "C"]
+        let slice = array[1 ..< 3] // ["B", "B"]
+        XCTAssertEqual(slice.replacingOccurrences(of: ["B"], with: []), [])
+    }
+
     static var allTests = [
         ("testReplaceSlice", testReplaceSlice),
     ]
