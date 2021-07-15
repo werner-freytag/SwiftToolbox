@@ -34,4 +34,8 @@ public extension String {
     func ranges(of regex: NSRegularExpression, options: String.CompareOptions = []) throws -> AnySequence<Range<String.Index>> {
         ranges(of: regex.pattern, options: try CompareOptions(regex.options).union(options))
     }
+
+    func substrings(of regex: NSRegularExpression, options: String.CompareOptions = []) throws -> AnySequence<Substring> {
+        substrings(of: regex.pattern, options: try CompareOptions(regex.options).union(options))
+    }
 }
