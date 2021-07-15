@@ -19,4 +19,5 @@ tests += StringProtocolExtensionTests.allTests
 tests += StringProtocolHTMLTests.allTests
 tests += StringProtocolPartitionTests.allTests
 tests += ThreadExtensionTests.allTests
+tests += NSRegularExpressionExtensionTests.allTests
 XCTMain(tests)
