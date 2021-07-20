@@ -65,7 +65,7 @@ public extension Collection where Element: Equatable, Index == Int, SubSequence:
         var fromOffset = startIndex
 
         return AnyIterator {
-            while fromOffset <= self.count - sliceLength {
+            while fromOffset <= endIndex - sliceLength {
                 guard self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice else {
                     fromOffset += 1
                     continue
@@ -86,5 +86,20 @@ public extension Collection where Index: SignedInteger, Index.Stride: SignedInte
         AnySequence((startIndex ..< Swift.max(startIndex, endIndex)).flatMap { lowerBound in
             (lowerBound.advanced(by: 1) ... endIndex).map { upperBound in self[lowerBound ..< upperBound] }
         })
+    }
+}
+
+public extension Collection {
+    /// Provides an array of ranges by subtracting excluded ranges from the collection range
+    func ranges<S: Collection>(excluding ranges: S) -> [Range<Index>] where S.Element == Range<Index> {
+        guard !ranges.isEmpty else { return [startIndex ..< endIndex] }
+
+        let dropFirst = ranges.first!.lowerBound == startIndex ? 1 : 0
+        let dropLast = ranges.reversed().first!.upperBound == endIndex ? 1 : 0
+
+        let lowerBounds = ([startIndex] + ranges.map { $0.upperBound }).dropFirst(dropFirst).dropLast(dropLast)
+        let upperBounds = (ranges.map { $0.lowerBound } + [endIndex]).dropFirst(dropFirst).dropLast(dropLast)
+
+        return zip(lowerBounds, upperBounds).map { $0 ..< $1 }
     }
 }

@@ -44,6 +44,12 @@ class CollectionExtensionTests: XCTestCase {
         XCTAssertEqual(["Hello", "World", "Hello"].ranges(of: ["hello"]), [])
     }
 
+    func testFindRangesInSlice() {
+        let array = ["A", "B", "B", "C"]
+        let slice = array[1 ..< 3] // ["B", "B"]
+        XCTAssertEqual(slice.ranges(of: ["B"]), [1 ..< 2, 2 ..< 3])
+    }
+
     func testFindFirstRange() {
         XCTAssertEqual(["A", "B", "A", "A", "C"].firstRange(of: ["A"]), 0 ..< 1)
         XCTAssertEqual(["A", "B", "A", "A", "B", "C"][1...].firstRange(of: ["A", "B"]), 3 ..< 5)
@@ -62,6 +68,13 @@ class CollectionExtensionTests: XCTestCase {
         XCTAssertEqual(Array([Int]([]).allSlices), [])
     }
 
+    func testRangesExcluding() {
+        let array = Array(repeating: 0, count: 10)
+        XCTAssertEqual(array.ranges(excluding: [0 ..< 2, 4 ..< 6]), [2 ..< 4, 6 ..< 10])
+        XCTAssertEqual(array.ranges(excluding: [1 ..< 2, 4 ..< 6]), [0 ..< 1, 2 ..< 4, 6 ..< 10])
+        XCTAssertEqual(array.ranges(excluding: [0 ..< 2, 4 ..< 10]), [2 ..< 4])
+    }
+
     static var allTests = [
         ("testCommonPrefix", testCommonPrefix),
         ("testCommonSuffix", testCommonSuffix),
@@ -69,5 +82,6 @@ class CollectionExtensionTests: XCTestCase {
         ("testFindRanges", testFindRanges),
         ("testFindFirstRange", testFindFirstRange),
         ("testAllSlices", testAllSlices),
+        ("testRangesExcluding", testRangesExcluding),
     ]
 }

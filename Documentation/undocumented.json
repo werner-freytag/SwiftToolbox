@@ -197,17 +197,45 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/NSRegularExpression+Extension.swift",
+      "line": 8,
+      "symbol": "String.CompareOptions.Error",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/NSRegularExpression+Extension.swift",
+      "line": 9,
+      "symbol": "String.CompareOptions.Error.invalidOption(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/NSRegularExpression+Extension.swift",
+      "line": 12,
+      "symbol": "String.CompareOptions.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/NSRegularExpression+Extension.swift",
+      "line": 34,
+      "symbol": "String.ranges(of:options:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/NSRegularExpression+Extension.swift",
+      "line": 38,
+      "symbol": "String.substrings(of:options:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/Sequence+Extension.swift",
       "line": 15,
       "symbol": "cartesian(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/StringProtocol+Diff.swift",
-      "line": 8,
-      "symbol": "StringProtocol.diff(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -284,13 +312,6 @@
       "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/StringProtocol+HTML.swift",
       "line": 8,
       "symbol": "StringProtocol.escapingHTMLSpecialChars()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/werner/Code/SwiftToolbox/Sources/SwiftToolbox/SwiftUI+Color+Extension.swift",
-      "line": 9,
-      "symbol": "SwiftUI.Color.init(hex:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
