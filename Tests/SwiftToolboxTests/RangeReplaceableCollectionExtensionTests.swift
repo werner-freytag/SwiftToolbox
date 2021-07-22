@@ -2,7 +2,7 @@
 //  Copyright © 2020 Werner Freytag. All rights reserved.
 //
 
-import SwiftToolbox
+@testable import SwiftToolbox
 import XCTest
 
 class RangeReplaceableCollectionExtensionTests: XCTestCase {

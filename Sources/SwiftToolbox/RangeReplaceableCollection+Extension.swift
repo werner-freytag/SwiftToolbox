@@ -22,32 +22,32 @@ public extension RangeReplaceableCollection where SubSequence: Equatable {
 }
 
 public extension RangeReplaceableCollection {
+    func rangesForMoving(range: Range<Index>, to toPosition: Index) -> [Range<Index>] {
+        switch true {
+        case range.contains(toPosition):
+            return [startIndex ..< endIndex] // no changes
+
+        case range.lowerBound < toPosition:
+            return [
+                startIndex ..< range.lowerBound, // content before
+                range.upperBound ..< toPosition, // content shifted to the left
+                range.lowerBound ..< range.upperBound, // shifted part
+                toPosition ..< endIndex, // rest
+            ]
+
+        default:
+            return [
+                startIndex ..< toPosition, // content before
+                range.lowerBound ..< range.upperBound, // shifted part
+                toPosition ..< range.lowerBound, // content shifted to the right
+                range.upperBound ..< endIndex, // rest
+            ]
+        }
+    }
+
     /// Move a part of the collection specified by a range to another position
     func moving(range: Range<Index>, to toPosition: Index) -> Self {
-        let shiftedRanges: [Range<Index>] = {
-            switch true {
-            case range.contains(toPosition):
-                return [startIndex ..< endIndex] // no changes
-
-            case range.lowerBound < toPosition:
-                return [
-                    startIndex ..< range.lowerBound, // content before
-                    range.upperBound ..< toPosition, // content shifted to the left
-                    range.lowerBound ..< range.upperBound, // shifted part
-                    toPosition ..< endIndex, // rest
-                ]
-
-            default:
-                return [
-                    startIndex ..< toPosition, // content before
-                    range.lowerBound ..< range.upperBound, // shifted part
-                    toPosition ..< range.lowerBound, // content shifted to the right
-                    range.upperBound ..< endIndex, // rest
-                ]
-            }
-        }()
-
-        return Self(shiftedRanges.map { self[$0] }.joined())
+        return Self(rangesForMoving(range: range, to: toPosition).map { self[$0] }.joined())
     }
 
     /// Replace a part of the collection specified by a range
