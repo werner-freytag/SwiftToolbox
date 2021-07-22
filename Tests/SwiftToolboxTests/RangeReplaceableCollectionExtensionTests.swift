@@ -21,7 +21,31 @@ class RangeReplaceableCollectionExtensionTests: XCTestCase {
         XCTAssertEqual(slice.replacingOccurrences(of: ["B"], with: []), [])
     }
 
+    func testMovingRange() {
+        let string = "HelloWorld"
+
+        // Move to end
+        XCTAssertEqual("WorldHello", string.moving(range: string.startIndex ..< string.index(string.startIndex, offsetBy: 5), to: string.endIndex))
+
+        // Move right
+        XCTAssertEqual("WHelloorld", string.moving(range: string.startIndex ..< string.index(string.startIndex, offsetBy: 5), to: string.index(string.startIndex, offsetBy: 6)))
+
+        // Move right inside range
+        XCTAssertEqual("HelloWorld", string.moving(range: string.startIndex ..< string.index(string.startIndex, offsetBy: 5), to: string.index(after: string.startIndex)))
+
+        // Move to start
+        XCTAssertEqual("WorldHello", string.moving(range: string.index(string.endIndex, offsetBy: -5) ..< string.endIndex, to: string.startIndex))
+
+        // Move left
+        XCTAssertEqual("HellWorldo", string.moving(range: string.index(string.endIndex, offsetBy: -5) ..< string.endIndex, to: string.index(string.endIndex, offsetBy: -6)))
+
+        // Move left inside range
+        XCTAssertEqual("HelloWorld", string.moving(range: string.index(string.endIndex, offsetBy: -5) ..< string.endIndex, to: string.index(string.endIndex, offsetBy: -4)))
+    }
+
     static var allTests = [
         ("testReplaceSlice", testReplaceSlice),
+        ("testReplaceSliceInSlice", testReplaceSliceInSlice),
+        ("testMovingRange", testMovingRange),
     ]
 }
