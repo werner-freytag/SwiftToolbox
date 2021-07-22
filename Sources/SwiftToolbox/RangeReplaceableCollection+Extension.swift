@@ -4,15 +4,20 @@
 
 import Foundation
 
-public extension RangeReplaceableCollection where Element: Equatable, Index == Int, SubSequence: Equatable {
+public extension RangeReplaceableCollection where SubSequence: Equatable {
     /// Replace a slice in one collection with another one
-    func replacingOccurrences(of search: SubSequence, with replacement: SubSequence) -> Self {
+    func replacing(_ search: SubSequence, with replacement: SubSequence) -> Self {
         var result = self
         for range in ranges(of: search).reversed() {
             result.replaceSubrange(range, with: replacement)
         }
 
         return result
+    }
+
+    @available(*, deprecated, message: "Has been renamed to replacing(_:with:)")
+    func replacingOccurrences(of search: SubSequence, with replacement: SubSequence) -> Self {
+        return replacing(search, with: replacement)
     }
 }
 
@@ -43,5 +48,12 @@ public extension RangeReplaceableCollection {
         }()
 
         return Self(shiftedRanges.map { self[$0] }.joined())
+    }
+
+    /// Replace a part of the collection specified by a range
+    func replacing(range: Range<Index>, with replacement: Self) -> Self {
+        var collection = self
+        collection.replaceSubrange(range, with: replacement)
+        return collection
     }
 }
