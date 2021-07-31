@@ -11,9 +11,20 @@ class EqualableTests: XCTestCase {
         XCTAssertEqual(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Apple(weight: 10, grade: 3)), false)
         XCTAssertEqual(AnyEqualable(Apple(weight: 10, grade: 2)) == AnyEqualable(Orange(weight: 10, grade: 2)), false)
     }
+    
+    func testFirstIndexOf() {
+        let car = Car()
+        let truck = Truck()
+        
+        let array: [Equalable] = [car, truck]
+
+        XCTAssertEqual(0, array.firstIndex(of: car))
+        XCTAssertEqual(1, array.firstIndex(of: truck))
+    }
 
     static var allTests = [
         ("testEqualable", testEqualable),
+        ("testFirstIndexOf", testFirstIndexOf),
     ]
 }
 
@@ -30,14 +41,16 @@ struct Orange {
 extension Apple: Equalable {}
 extension Orange: Equalable {}
 
-extension Apple: Equatable {
-    static func == (lhs: Apple, rhs: Apple) -> Bool {
-        return lhs.weight == rhs.weight && lhs.grade == rhs.grade
+extension Apple: Equatable {}
+extension Orange: Equatable {}
+
+protocol Vehicle : Equalable {}
+
+extension Equalable where Self: Vehicle {
+    func equals(_ other: Any) -> Bool {
+        return type(of: other) == type(of: self)
     }
 }
 
-extension Orange: Equatable {
-    static func == (lhs: Orange, rhs: Orange) -> Bool {
-        return lhs.weight == rhs.weight && lhs.grade == rhs.grade
-    }
-}
+struct Car : Vehicle {}
+struct Truck : Vehicle {}
