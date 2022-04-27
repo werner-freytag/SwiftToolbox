@@ -5,7 +5,7 @@
 import SwiftToolbox
 import XCTest
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS)
 
     class UIImageExtensionTest: XCTestCase {
         func testInitWithSizeColor() {

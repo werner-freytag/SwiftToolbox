@@ -12,11 +12,6 @@ class ArrayExtensionTests: XCTestCase {
         XCTAssertEqual(array, ["ABC", "GHI"])
     }
 
-    func testUniqueElements() {
-        let array = ["ABC", "DEF", "GHI", "DEF"]
-        XCTAssertEqual(array.uniqueElements(), ["ABC", "DEF", "GHI"])
-    }
-
     func testRemoveDuplicateElements() {
         var array = ["ABC", "DEF", "GHI", "DEF"]
         array.removeDuplicateElements()
@@ -43,7 +38,6 @@ class ArrayExtensionTests: XCTestCase {
 
     static var allTests = [
         ("testRemoveObject", testRemoveObject),
-        ("testUniqueElements", testUniqueElements),
         ("testRemoveDuplicateElements", testRemoveDuplicateElements),
         ("testIntersection", testIntersection),
         ("testFilterByPredicate", testFilterByPredicate),

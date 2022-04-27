@@ -20,6 +20,7 @@ public extension Array where Element: NSObject {
 
 public extension Array where Element: Hashable {
     /// returns only unque elements of an array of hashable elements
+    @available(*, deprecated, message: "Use https://github.com/apple/swift-algorithms/blob/main/Guides/Unique.md instead")
     func uniqueElements() -> [Element] {
         var single = Set<Element>()
         return filter { single.insert($0).inserted }

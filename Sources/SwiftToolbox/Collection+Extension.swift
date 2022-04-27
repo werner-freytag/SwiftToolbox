@@ -49,7 +49,7 @@ public extension Collection where Element: Equatable {
     }
 }
 
-public extension Collection where Element: Equatable, Index == Int, SubSequence: Equatable {
+public extension Collection where SubSequence: Equatable {
     func ranges(of slice: SubSequence) -> [Range<Index>] {
         Array(rangeIterator(of: slice))
     }
@@ -65,14 +65,14 @@ public extension Collection where Element: Equatable, Index == Int, SubSequence:
         var fromOffset = startIndex
 
         return AnyIterator {
-            while fromOffset <= endIndex - sliceLength {
-                guard self[fromOffset ..< fromOffset.advanced(by: sliceLength)] == slice else {
-                    fromOffset += 1
+            while fromOffset <= index(endIndex, offsetBy: -sliceLength) {
+                guard self[fromOffset ..< index(fromOffset, offsetBy: sliceLength)] == slice else {
+                    fromOffset = index(after: fromOffset)
                     continue
                 }
 
-                defer { fromOffset += sliceLength }
-                return fromOffset ..< fromOffset.advanced(by: sliceLength)
+                defer { fromOffset = index(fromOffset, offsetBy: sliceLength) }
+                return fromOffset ..< index(fromOffset, offsetBy: sliceLength)
             }
 
             return nil

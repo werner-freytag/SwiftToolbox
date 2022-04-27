@@ -28,3 +28,9 @@ extension AnyEqualable: Equatable {
         return lhs.object.equals(rhs.object)
     }
 }
+
+public extension Array {
+    func firstIndex(of element: Equalable) -> Self.Index? {
+        firstIndex(where: { element.equals($0) })
+    }
+}

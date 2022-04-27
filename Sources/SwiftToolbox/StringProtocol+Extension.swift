@@ -119,7 +119,7 @@ public extension StringProtocol where Index == String.Index {
     var deletingPathExtension: Self.SubSequence {
         let pattern = "[^\\.]\\.+(([_a-z0-9]{1,10}|[_A-Z0-9]{1,10})\\.)?[_A-Za-z0-9]{1,20}\\.*$"
 
-        guard let range = self.range(of: pattern, options: [.regularExpression, .widthInsensitive])
+        guard let range = range(of: pattern, options: [.regularExpression, .widthInsensitive])
         else { return self[..<endIndex] }
 
         return self[...range.lowerBound]

@@ -20,8 +20,8 @@ public extension String {
 
 public extension String {
     /// Returns all subpatterns of the first match
-    func match(regex: String) throws -> [String]? {
-        let regex = try NSRegularExpression(pattern: regex)
+    func match(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [String]? {
+        let regex = try NSRegularExpression(pattern: pattern, options: options)
         let nsString = self as NSString
 
         guard let match = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length)).first
