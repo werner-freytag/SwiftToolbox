@@ -5,18 +5,31 @@
 import Foundation
 
 infix operator ~
+infix operator ~<
+
 public extension StringProtocol where Index == String.Index {
     /// check if strings are same using localized, case insensitive compare
     static func ~ (left: Self, right: Self) -> Bool {
         return left.localizedCaseInsensitiveCompare(right) == .orderedSame
     }
-}
 
-infix operator ~<
-public extension StringProtocol where Index == String.Index {
     /// compare strings same using localized, case insensitive compare
     static func ~< (left: Self, right: Self) -> Bool {
         return left.localizedCaseInsensitiveCompare(right) == .orderedAscending
+    }
+}
+
+public extension Optional where Wrapped: StringProtocol {
+    /// check if optional strings are same using localized, case insensitive compare
+    static func ~ (left: Self, right: Self) -> Bool {
+        guard let left = left, let right = right else { return false }
+        return left ~ right
+    }
+
+    /// compare optional strings same using localized, case insensitive compare
+    static func ~< (left: Self, right: Self) -> Bool {
+        guard let left = left, let right = right else { return false }
+        return left ~< right
     }
 }
 

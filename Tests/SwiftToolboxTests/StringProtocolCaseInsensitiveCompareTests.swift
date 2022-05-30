@@ -20,6 +20,36 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         XCTAssertEqual("hellO 1" ~< "HellO 2", true)
     }
 
+    func testCompareOptionalEquals() {
+        let string1 = "Hello"
+        let string2: String? = "hello"
+        let string3: String? = nil
+
+        XCTAssertEqual(string1 ~ string2, true)
+        XCTAssertEqual(string2 ~ string1, true)
+
+        XCTAssertEqual(string1 ~ string3, false)
+        XCTAssertEqual(string3 ~ string1, false)
+
+        XCTAssertEqual("hellö" ~ string2, false)
+        XCTAssertEqual(string2 ~ "hellö", false)
+    }
+
+    func testCompareOptionalLessThan() {
+        let string1 = "Hello"
+        let string2: String? = "hello"
+        let string3: String? = nil
+
+        XCTAssertEqual(string1 ~< string2, false)
+        XCTAssertEqual(string2 ~< string1, false)
+
+        XCTAssertEqual(string1 ~< string3, false)
+        XCTAssertEqual(string3 ~< string1, false)
+
+        XCTAssertEqual("hellö" ~< string2, false)
+        XCTAssertEqual(string2 ~< "hellö", true)
+    }
+
     func testMatchAgainst() {
         XCTAssertEqual("Hello".match(against: "hello"), 1)
         XCTAssertEqual("Hello".match(against: "hello", options: []), 0) // Case sensitive
