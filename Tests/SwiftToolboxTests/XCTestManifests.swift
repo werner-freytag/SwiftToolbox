@@ -9,6 +9,7 @@ import XCTest
             testCase(EqualableTests.allTests),
             testCase(FunctionsTests.allTests),
             testCase(LoopSequenceTests.allTests),
+            testCase(ResettableLazyPropertyWrapperTests.allTests),
             testCase(SequenceExtensionTests.allTests),
             testCase(StringEncodingExtensionTest.allTests),
             testCase(StringExtensionTests.allTests),
