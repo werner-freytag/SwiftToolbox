@@ -22,7 +22,7 @@ public extension StringProtocol where Index == String.Index {
 public extension Optional where Wrapped: StringProtocol {
     /// check if optional strings are same using localized, case insensitive compare
     static func ~ (left: Self, right: Self) -> Bool {
-        guard let left = left, let right = right else { return false }
+        guard let left = left, let right = right else { return left == right }
         return left ~ right
     }
 

@@ -24,6 +24,7 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         let string1 = "Hello"
         let string2: String? = "hello"
         let string3: String? = nil
+        let string4: String? = nil
 
         XCTAssertEqual(string1 ~ string2, true)
         XCTAssertEqual(string2 ~ string1, true)
@@ -33,6 +34,8 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
 
         XCTAssertEqual("hellö" ~ string2, false)
         XCTAssertEqual(string2 ~ "hellö", false)
+
+        XCTAssertEqual(string3 ~ string4, true)
     }
 
     func testCompareOptionalLessThan() {
