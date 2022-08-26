@@ -10,12 +10,12 @@ infix operator ~<
 public extension StringProtocol where Index == String.Index {
     /// check if strings are same using localized, case insensitive compare
     static func ~ (left: Self, right: Self) -> Bool {
-        return left.localizedCaseInsensitiveCompare(right) == .orderedSame
+        return left.localizedStandardCompare(right) == .orderedSame
     }
 
     /// compare strings same using localized, case insensitive compare
     static func ~< (left: Self, right: Self) -> Bool {
-        return left.localizedCaseInsensitiveCompare(right) == .orderedAscending
+        return left.localizedStandardCompare(right) == .orderedAscending
     }
 }
 
