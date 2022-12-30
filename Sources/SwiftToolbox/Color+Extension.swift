@@ -58,6 +58,14 @@ public extension Color {
     }
 }
 
+public extension UIColor {
+    var hex: Int {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        return (Int(r * 255) & 0xFF) << 16 + (Int(g * 255) & 0xFF) << 8 + (Int(b * 255) & 0xFF)
+    }
+}
+
 public extension Color {
     private typealias RGBComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
 
