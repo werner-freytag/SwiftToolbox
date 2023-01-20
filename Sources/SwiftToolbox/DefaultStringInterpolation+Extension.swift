@@ -1,3 +1,7 @@
+//
+//  Copyright © Werner Freytag. All rights reserved.
+//
+
 import Foundation
 
 public extension DefaultStringInterpolation {

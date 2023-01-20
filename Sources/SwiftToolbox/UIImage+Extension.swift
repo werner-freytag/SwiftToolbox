@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017-2019 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 #if os(iOS) || os(tvOS) || os(watchOS)

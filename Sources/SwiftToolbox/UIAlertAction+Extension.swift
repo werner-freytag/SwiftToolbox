@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 #if os(iOS)

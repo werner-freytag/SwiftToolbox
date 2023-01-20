@@ -1,5 +1,5 @@
 //
-//  Copyright © 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import Foundation

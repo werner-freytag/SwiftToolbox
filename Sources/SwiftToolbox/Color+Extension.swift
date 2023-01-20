@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 - 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import CoreGraphics
