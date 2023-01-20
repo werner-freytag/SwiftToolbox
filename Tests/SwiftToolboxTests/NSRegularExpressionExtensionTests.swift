@@ -18,9 +18,6 @@ class NSRegularExpressionExtensionTests: XCTestCase {
 
         // caseInsensitive
         XCTAssertEqual([string.startIndex ..< string.endIndex], Array(try string.ranges(of: NSRegularExpression(pattern: "[A-Z][a-z]+", options: .caseInsensitive))))
-
-        // caseInsensitive as func argument
-        XCTAssertEqual([string.startIndex ..< string.endIndex], Array(try string.ranges(of: NSRegularExpression(pattern: "[A-Z][a-z]+"), options: .caseInsensitive)))
     }
 
     func testSubstrings() {
@@ -29,9 +26,6 @@ class NSRegularExpressionExtensionTests: XCTestCase {
 
         // caseInsensitive by NSRegularExpression
         XCTAssertEqual(["HelloWorld"], Array(try string.substrings(of: NSRegularExpression(pattern: "[A-Z][a-z]+", options: .caseInsensitive))))
-
-        // caseInsensitive base func argument
-        XCTAssertEqual(["HelloWorld"], Array(try string.substrings(of: NSRegularExpression(pattern: "[A-Z][a-z]+"), options: .caseInsensitive)))
     }
 
     static var allTests = [

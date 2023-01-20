@@ -12,8 +12,8 @@ public extension Sequence {
     }
 }
 
-public func cartesian<T1: Sequence, T2: Sequence>(_ lhs: T1, _ rhs: T2) -> AnySequence<(T1.Element, T2.Element)> {
-    AnySequence(lhs.lazy.flatMap { x in rhs.lazy.map { y in (x, y) } })
+public func cartesian<T1: Sequence, T2: Sequence>(_ lhs: T1, _ rhs: T2) -> some Sequence<(T1.Element, T2.Element)> {
+    lhs.lazy.flatMap { x in rhs.lazy.map { y in (x, y) } }
 }
 
 public extension Sequence where Element: Hashable {

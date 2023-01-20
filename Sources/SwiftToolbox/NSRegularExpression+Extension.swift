@@ -30,12 +30,24 @@ public extension String.CompareOptions {
     }
 }
 
+public extension NSRegularExpression {
+    func matches(in string: String, options: MatchingOptions = []) -> [NSTextCheckingResult] {
+        matches(in: string, options: options, range: NSRange(location: 0, length: (string as NSString).length))
+    }
+}
+
 public extension String {
-    func ranges(of regex: NSRegularExpression, options: String.CompareOptions = []) throws -> AnySequence<Range<String.Index>> {
-        ranges(of: regex.pattern, options: try CompareOptions(regex.options).union(options))
+    func ranges(of regex: NSRegularExpression) -> some Sequence<Range<Index>> {
+        regex.matches(in: self)
+            .map {
+                index(startIndex, offsetBy: $0.range.lowerBound)
+                    ..<
+                    index(startIndex, offsetBy: $0.range.upperBound)
+            }
     }
 
-    func substrings(of regex: NSRegularExpression, options: String.CompareOptions = []) throws -> AnySequence<Substring> {
-        substrings(of: regex.pattern, options: try CompareOptions(regex.options).union(options))
+    func substrings(of regex: NSRegularExpression) -> some Sequence<Substring> {
+        ranges(of: regex)
+            .map { self[$0] }
     }
 }

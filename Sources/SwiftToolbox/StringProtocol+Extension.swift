@@ -55,10 +55,9 @@ public extension StringProtocol where Index == String.Index {
     ///   - searchString: The string to search for.
     ///   - options: A mask specifying search options.
     /// - Returns: A sequence providing the substring for all matches
-    func substrings(of searchString: String, options: String.CompareOptions = []) -> AnySequence<Self.SubSequence> {
-        return AnySequence(ranges(of: searchString, options: options)
-            .lazy
-            .map { self[$0] })
+    func substrings(of searchString: String, options: String.CompareOptions = []) -> some Sequence<SubSequence> {
+        ranges(of: searchString, options: options)
+            .map { self[$0] }
     }
 
     /// Returns a sequence for all matches of the given search string
@@ -67,8 +66,8 @@ public extension StringProtocol where Index == String.Index {
     ///   - searchString: The string to search for.
     ///   - options: A mask specifying search options.
     /// - Returns: A sequence providing the range for all matches
-    func ranges(of searchString: String, options: String.CompareOptions = []) -> AnySequence<Range<String.Index>> {
-        return AnySequence(sequence(state: startIndex) { offset in
+    func ranges(of searchString: String, options: String.CompareOptions = []) -> some Sequence<Range<String.Index>> {
+        sequence(state: startIndex) { offset in
             guard offset < self.endIndex,
                   let foundRange = self.range(of: searchString, options: options, range: offset ..< self.endIndex)
             else { return nil }
@@ -80,13 +79,13 @@ public extension StringProtocol where Index == String.Index {
             }
 
             return foundRange
-        })
+        }
     }
 }
 
 public extension StringProtocol where Index == String.Index {
-    func findWords() -> AnySequence<Self.SubSequence> {
-        return substrings(of: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
+    func findWords() -> some Sequence<SubSequence> {
+        substrings(of: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
     }
 }
 
@@ -146,7 +145,7 @@ public extension StringProtocol {
         let regex = try NSRegularExpression(pattern: pattern, options: options)
         let nsString = String(self) as NSString
 
-        guard let match = regex.matches(in: String(self), range: NSRange(location: 0, length: nsString.length)).first
+        guard let match = regex.matches(in: String(self)).first
         else { return nil }
 
         var components: [String] = []

@@ -82,10 +82,10 @@ public extension Collection where SubSequence: Equatable {
 
 public extension Collection where Index: SignedInteger, Index.Stride: SignedInteger {
     /// Returns sequence of all possible slices of the collection
-    var allSlices: AnySequence<SubSequence> {
-        AnySequence((startIndex ..< Swift.max(startIndex, endIndex)).flatMap { lowerBound in
+    var allSlices: some Collection<SubSequence> {
+        (startIndex ..< Swift.max(startIndex, endIndex)).flatMap { lowerBound in
             (lowerBound.advanced(by: 1) ... endIndex).map { upperBound in self[lowerBound ..< upperBound] }
-        })
+        }
     }
 }
 
