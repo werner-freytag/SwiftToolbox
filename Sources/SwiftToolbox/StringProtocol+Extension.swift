@@ -161,3 +161,22 @@ public extension StringProtocol {
         return components
     }
 }
+
+public extension String {
+    /// Splits a string by the given regular expression
+    func split(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [SubSequence]? {
+        var result: [SubSequence] = []
+
+        let regex = try NSRegularExpression(pattern: pattern, options: options)
+
+        var offset = startIndex
+        ranges(of: regex).forEach { range in
+            result.append(self[offset ..< range.lowerBound])
+            offset = range.upperBound
+        }
+
+        result.append(self[offset ..< endIndex])
+
+        return result
+    }
+}
