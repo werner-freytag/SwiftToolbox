@@ -125,3 +125,40 @@ public extension StringProtocol where Index == String.Index {
         return self[...range.lowerBound]
     }
 }
+
+public extension StringProtocol {
+    /// Remove whitespaces from start and end of string
+    var trimmed: String {
+        return trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+public extension StringProtocol {
+    /// Find out if string contains another string
+    func contains(_ find: String, options: String.CompareOptions = [.caseInsensitive, .widthInsensitive]) -> Bool {
+        return range(of: find, options: options) != nil
+    }
+}
+
+public extension StringProtocol {
+    /// Returns all subpatterns of the first match
+    func match(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [String]? {
+        let regex = try NSRegularExpression(pattern: pattern, options: options)
+        let nsString = String(self) as NSString
+
+        guard let match = regex.matches(in: String(self), range: NSRange(location: 0, length: nsString.length)).first
+        else { return nil }
+
+        var components: [String] = []
+        for i in 0 ..< match.numberOfRanges {
+            let range = match.range(at: i)
+            if range.location == NSNotFound {
+                components.append("")
+            } else {
+                components.append(nsString.substring(with: range) as String)
+            }
+        }
+
+        return components
+    }
+}
