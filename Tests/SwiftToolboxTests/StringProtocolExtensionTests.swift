@@ -185,6 +185,15 @@ class StringProtocolExtensionTests: XCTestCase {
         XCTAssertEqual(try! "Hello".match(regex: "^H(i)?"), ["H", ""])
     }
 
+    func testSplit() {
+        XCTAssertEqual("A|B|C".split("|"), ["A", "B", "C"])
+        XCTAssertEqual("A|B|".split("|"), ["A", "B", ""])
+        XCTAssertEqual("|B|".split("|"), ["", "B", ""])
+        XCTAssertEqual("||".split("|"), ["", "", ""])
+        XCTAssertEqual("ABC".split("|"), ["ABC"])
+        XCTAssertEqual("".split("|"), [""])
+    }
+
     func testSplitRegex() {
         XCTAssertEqual(try! "A|B|C".split(regex: "[|]"), ["A", "B", "C"])
         XCTAssertEqual(try! "A|B|".split(regex: "[|]"), ["A", "B", ""])

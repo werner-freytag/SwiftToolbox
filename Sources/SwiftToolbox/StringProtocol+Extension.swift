@@ -163,14 +163,21 @@ public extension StringProtocol {
 }
 
 public extension String {
+    /// Splits a string by the given separator
+    func split(_ separator: String, options: String.CompareOptions = []) -> [SubSequence] {
+        split(separatorRanges: ranges(of: separator, options: options))
+    }
+
     /// Splits a string by the given regular expression
-    func split(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [SubSequence]? {
+    func split(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [SubSequence] {
+        try split(separatorRanges: ranges(of: .init(pattern: pattern, options: options)))
+    }
+
+    private func split(separatorRanges: some Sequence<Range<Index>>) -> [SubSequence] {
         var result: [SubSequence] = []
 
-        let regex = try NSRegularExpression(pattern: pattern, options: options)
-
         var offset = startIndex
-        ranges(of: regex).forEach { range in
+        separatorRanges.forEach { range in
             result.append(self[offset ..< range.lowerBound])
             offset = range.upperBound
         }
