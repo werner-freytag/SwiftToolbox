@@ -29,7 +29,7 @@
     }
 #endif
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
     public extension UIImage {
         /// Create an image with the size and bitmap content of a view
         convenience init?(contentsOf view: UIView) {
