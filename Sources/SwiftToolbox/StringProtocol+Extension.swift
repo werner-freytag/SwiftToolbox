@@ -169,8 +169,13 @@ public extension String {
     }
 
     /// Splits a string by the given regular expression
+    func split(_ regex: NSRegularExpression) -> [SubSequence] {
+        split(separatorRanges: ranges(of: regex))
+    }
+
+    /// Splits a string by the given regular expression
     func split(regex pattern: String, options: NSRegularExpression.Options = []) throws -> [SubSequence] {
-        try split(separatorRanges: ranges(of: .init(pattern: pattern, options: options)))
+        try split(.init(pattern: pattern, options: options))
     }
 
     private func split(separatorRanges: some Sequence<Range<Index>>) -> [SubSequence] {
