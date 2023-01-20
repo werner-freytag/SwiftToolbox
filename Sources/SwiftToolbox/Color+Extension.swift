@@ -58,16 +58,8 @@ public extension Color {
     }
 }
 
-public extension UIColor {
-    var hex: Int {
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        getRed(&r, green: &g, blue: &b, alpha: &a)
-        return (Int(r * 255) & 0xFF) << 16 + (Int(g * 255) & 0xFF) << 8 + (Int(b * 255) & 0xFF)
-    }
-}
-
 public extension Color {
-    private typealias RGBComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    fileprivate typealias RGBComponents = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
 
     private var rgbComponents: RGBComponents? {
         #if os(OSX)
@@ -121,5 +113,16 @@ public extension Color {
 
     private func decrease(_ value: CGFloat, _ percentage: CGFloat) -> CGFloat {
         return max(0, value * (1 - percentage))
+    }
+}
+
+public extension Color {
+    var hex: Int {
+        guard let rgb = rgbComponents
+        else { assertionFailure(); return -1 }
+
+        return (Int(rgb.red * 255) & 0xFF) << 16
+            + (Int(rgb.green * 255) & 0xFF) << 8
+            + (Int(rgb.blue * 255) & 0xFF)
     }
 }
