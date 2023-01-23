@@ -32,7 +32,7 @@ public extension String.CompareOptions {
 
 public extension NSRegularExpression {
     func matches(in string: String, options: MatchingOptions = []) -> [NSTextCheckingResult] {
-        matches(in: string, options: options, range: NSRange(location: 0, length: (string as NSString).length))
+        matches(in: string, options: options, range: string.nsRange)
     }
 }
 
@@ -50,4 +50,14 @@ public extension String {
         ranges(of: regex)
             .map { self[$0] }
     }
+
+    func replacing(_ regex: NSRegularExpression, with template: String) -> String {
+        let mutableString = NSMutableString(string: self)
+        regex.replaceMatches(in: mutableString, range: nsRange, withTemplate: template)
+        return mutableString as String
+    }
+}
+
+private extension String {
+    var nsRange: NSRange { NSRange(location: 0, length: (self as NSString).length) }
 }

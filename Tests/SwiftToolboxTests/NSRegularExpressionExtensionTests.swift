@@ -28,8 +28,16 @@ class NSRegularExpressionExtensionTests: XCTestCase {
         XCTAssertEqual(["HelloWorld"], Array(try string.substrings(of: NSRegularExpression(pattern: "[A-Z][a-z]+", options: .caseInsensitive))))
     }
 
+    func testReplacingMatches() {
+        let string = "HelloWorld"
+        XCTAssertEqual("Hello(World)", string.replacing(try! NSRegularExpression(pattern: "World"), with: "($0)"))
+        XCTAssertEqual("(H)(e)lloWorld", string.replacing(try! NSRegularExpression(pattern: "([a-k])(?=.)", options: .caseInsensitive), with: "($1)"))
+    }
+
     static var allTests = [
         ("testCreateOptions", testCreateOptions),
         ("testRanges", testRanges),
+        ("testSubstrings", testReplacingMatches),
+        ("testReplacingMatches", testRanges),
     ]
 }
