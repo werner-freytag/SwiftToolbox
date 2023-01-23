@@ -39,11 +39,7 @@ public extension NSRegularExpression {
 public extension String {
     func ranges(of regex: NSRegularExpression) -> some Sequence<Range<Index>> {
         regex.matches(in: self)
-            .map {
-                index(startIndex, offsetBy: $0.range.lowerBound)
-                    ..<
-                    index(startIndex, offsetBy: $0.range.upperBound)
-            }
+            .map { $0.range(in: self) }
     }
 
     func substrings(of regex: NSRegularExpression) -> some Sequence<Substring> {
