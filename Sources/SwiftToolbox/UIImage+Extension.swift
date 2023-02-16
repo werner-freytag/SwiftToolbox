@@ -58,6 +58,8 @@
     public extension UIImage {
         /// Create a tinted version of an image
         func colored(with color: UIColor) -> UIImage? {
+            guard let cgImage else { return nil }
+
             guard let context = UIGraphicsBeginImageContext(size: size, scale: scale) else { return nil }
             defer { UIGraphicsEndImageContext() }
 
@@ -66,7 +68,7 @@
 
             // set the blend mode to color burn, and the original image
             let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-            context.clip(to: rect, mask: cgImage!)
+            context.clip(to: rect, mask: cgImage)
 
             // set a mask that matches the shape of the image, then draw (color burn) a colored rectangle
             context.fill(rect)
@@ -77,13 +79,15 @@
 
         /// Create a version of an image modifying the alpha component
         func withAlpha(_ alpha: CGFloat) -> UIImage? {
+            guard let cgImage else { return nil }
+
             guard let context = UIGraphicsBeginImageContext(size: size, scale: scale) else { return self }
             defer { UIGraphicsEndImageContext() }
 
             let rect = CGRect(origin: .zero, size: size)
             context.setBlendMode(.multiply)
             context.setAlpha(alpha)
-            context.draw(cgImage!, in: rect)
+            context.draw(cgImage, in: rect)
             return UIGraphicsGetImageFromCurrentImageContext()
         }
 
@@ -97,6 +101,7 @@
         /// Create a resized version of an image
         func resized(to size: CGSize, mode: ContentMode = .scaleAspectFill) -> UIImage? {
             guard self.size != size else { return self }
+            guard let cgImage else { return nil }
 
             guard let context = UIGraphicsBeginImageContext(size: size, scale: scale) else { return nil }
             defer { UIGraphicsEndImageContext() }
@@ -122,12 +127,14 @@
             let center = CGPoint(x: (size.width - targetSize.width) / 2, y: (size.height - targetSize.height) / 2)
             let targetRect = CGRect(origin: center, size: targetSize)
 
-            context.draw(cgImage!, in: targetRect)
+            context.draw(cgImage, in: targetRect)
             return UIGraphicsGetImageFromCurrentImageContext()
         }
 
         /// Create an image with a part of another image
         func cropped(to rect: CGRect) -> UIImage? {
+            guard let cgImage else { return nil }
+
             guard let context = UIGraphicsBeginImageContext(size: rect.size, scale: scale) else { return nil }
             defer { UIGraphicsEndImageContext() }
 
@@ -135,7 +142,7 @@
             context.translateBy(x: rect.minX, y: rect.minY)
             context.restoreGState()
             context.clip()
-            context.draw(cgImage!, in: CGRect(origin: .zero, size: size))
+            context.draw(cgImage, in: CGRect(origin: .zero, size: size))
             return UIGraphicsGetImageFromCurrentImageContext()
         }
     }
