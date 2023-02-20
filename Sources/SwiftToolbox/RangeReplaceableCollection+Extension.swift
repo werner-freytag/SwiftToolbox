@@ -1,5 +1,5 @@
 //
-//  Copyright © 2020 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import Foundation
@@ -15,6 +15,7 @@ public extension RangeReplaceableCollection where SubSequence: Equatable {
         return result
     }
 
+    /// Deprecated: Replace a slice in one collection with another one
     @available(*, deprecated, message: "Has been renamed to replacing(_:with:)")
     func replacingOccurrences(of search: SubSequence, with replacement: SubSequence) -> Self {
         return replacing(search, with: replacement)
@@ -22,7 +23,7 @@ public extension RangeReplaceableCollection where SubSequence: Equatable {
 }
 
 public extension RangeReplaceableCollection {
-    func rangesForMoving(range: Range<Index>, to toPosition: Index) -> [Range<Index>] {
+    private func rangesForMoving(range: Range<Index>, to toPosition: Index) -> [Range<Index>] {
         switch true {
         case range.contains(toPosition):
             return [startIndex ..< endIndex] // no changes

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 - 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import SwiftToolbox
@@ -162,6 +162,48 @@ class StringProtocolExtensionTests: XCTestCase {
         XCTAssertEqual("scratch..tiff".deletingPathExtension, "scratch")
     }
 
+    func testTrimming() {
+        XCTAssertEqual("Hello".trimmed, "Hello")
+        XCTAssertEqual("Hello     ".trimmed, "Hello")
+        XCTAssertEqual("   Hello     ".trimmed, "Hello")
+        XCTAssertEqual(" Hello \n".trimmed, "Hello")
+        XCTAssertEqual("\t   Hello \n".trimmed, "Hello")
+        XCTAssertEqual("  \n\t   Hello \n\r \t ".trimmed, "Hello")
+    }
+
+    func testContains() {
+        XCTAssertTrue("Hello".contains("Hell"))
+        XCTAssertFalse("Hello".contains("Hi"))
+    }
+
+    func testMatchRegex() {
+        XCTAssertEqual(try! "Hello".match(regex: "l+"), ["ll"])
+        XCTAssertEqual(try! "Hello".match(regex: "(l+)"), ["ll", "ll"])
+        XCTAssertNil(try? "Hello".match(regex: "(^l+"))
+        XCTAssertNil(try! "Hello".match(regex: "^(l+)"))
+        XCTAssertEqual(try! "Hello".match(regex: "^H(e)(l+)"), ["Hell", "e", "ll"])
+        XCTAssertEqual(try! "Hello".match(regex: "^H(i)?"), ["H", ""])
+    }
+
+    func testSplit() {
+        XCTAssertEqual("A|B|C".split("|"), ["A", "B", "C"])
+        XCTAssertEqual("A|B|".split("|"), ["A", "B", ""])
+        XCTAssertEqual("|B|".split("|"), ["", "B", ""])
+        XCTAssertEqual("||".split("|"), ["", "", ""])
+        XCTAssertEqual("ABC".split("|"), ["ABC"])
+        XCTAssertEqual("".split("|"), [""])
+    }
+
+    func testSplitRegex() {
+        XCTAssertEqual(try! "A|B|C".split(regex: "[|]"), ["A", "B", "C"])
+        XCTAssertEqual(try! "A|B|".split(regex: "[|]"), ["A", "B", ""])
+        XCTAssertEqual(try! "|B|".split(regex: "[|]"), ["", "B", ""])
+        XCTAssertEqual(try! "||".split(regex: "[|]"), ["", "", ""])
+        XCTAssertEqual(try! "ABC".split(regex: "[|]"), ["ABC"])
+        XCTAssertEqual(try! "abc".split(regex: "."), ["", "", "", ""])
+        XCTAssertEqual(try! "abc".split(regex: "\\b"), ["", "abc", ""])
+    }
+
     static var allTests = [
         ("testSubscripts", testSubscripts),
         ("testCommonSuffix", testCommonSuffix),
@@ -171,5 +213,8 @@ class StringProtocolExtensionTests: XCTestCase {
         ("testSubstringsMatching", testSubstringsMatching),
         ("testPathExtension", testPathExtension),
         ("testDeletingPathExtension", testDeletingPathExtension),
+        ("testTrimming", testTrimming),
+        ("testContains", testContains),
+        ("testMatchRegex", testMatchRegex),
     ]
 }

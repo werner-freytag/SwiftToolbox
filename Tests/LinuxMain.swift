@@ -1,3 +1,7 @@
+//
+//  Copyright © Werner Freytag. All rights reserved.
+//
+
 import XCTest
 
 import SwiftToolboxTests

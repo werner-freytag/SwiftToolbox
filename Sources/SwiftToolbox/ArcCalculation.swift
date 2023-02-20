@@ -1,3 +1,7 @@
+//
+//  Copyright © Werner Freytag. All rights reserved.
+//
+
 import Foundation
 
 /// Reduce an angle in radians to the range (0 - 2π)

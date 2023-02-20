@@ -1,5 +1,5 @@
 //
-//  Copyright © 2017 - 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import SwiftToolbox
@@ -34,8 +34,17 @@ class SequenceExtensionTests: XCTestCase {
         XCTAssertEqual([Combi](), cartesian([String]([]), [Int]([])).map { Combi($0.0, $0.1) })
     }
 
+    func testHasDuplicates() {
+        // Combination
+        XCTAssertEqual(true, [1, 2, 3, 2].hasDuplicates())
+        XCTAssertEqual(false, [1, 2, 3, 4].hasDuplicates())
+        XCTAssertEqual(true, [-2, 1, 2].hasDuplicates(on: { $0 * $0 }))
+        XCTAssertEqual(false, [0, 1, 2].hasDuplicates(on: { $0 * $0 }))
+    }
+
     static var allTests = [
         ("testIsEmpty", testIsEmpty),
         ("testCartesian", testCartesian),
+        ("testHasDuplicates", testHasDuplicates),
     ]
 }

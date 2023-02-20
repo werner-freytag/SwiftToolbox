@@ -1,10 +1,12 @@
 //
-//  Copyright © 2020 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import Foundation
 
+/// Exceptions to be thrown when cast fails
 public enum CastError: Error {
+    /// Casting failed
     case notCastable
 }
 

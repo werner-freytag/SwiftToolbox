@@ -1,5 +1,5 @@
 //
-//  Copyright © 2021 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 @testable import SwiftToolbox
@@ -18,9 +18,6 @@ class NSRegularExpressionExtensionTests: XCTestCase {
 
         // caseInsensitive
         XCTAssertEqual([string.startIndex ..< string.endIndex], Array(try string.ranges(of: NSRegularExpression(pattern: "[A-Z][a-z]+", options: .caseInsensitive))))
-
-        // caseInsensitive as func argument
-        XCTAssertEqual([string.startIndex ..< string.endIndex], Array(try string.ranges(of: NSRegularExpression(pattern: "[A-Z][a-z]+"), options: .caseInsensitive)))
     }
 
     func testSubstrings() {
@@ -29,13 +26,18 @@ class NSRegularExpressionExtensionTests: XCTestCase {
 
         // caseInsensitive by NSRegularExpression
         XCTAssertEqual(["HelloWorld"], Array(try string.substrings(of: NSRegularExpression(pattern: "[A-Z][a-z]+", options: .caseInsensitive))))
+    }
 
-        // caseInsensitive base func argument
-        XCTAssertEqual(["HelloWorld"], Array(try string.substrings(of: NSRegularExpression(pattern: "[A-Z][a-z]+"), options: .caseInsensitive)))
+    func testReplacingMatches() {
+        let string = "HelloWorld"
+        XCTAssertEqual("Hello(World)", string.replacing(try! NSRegularExpression(pattern: "World"), with: "($0)"))
+        XCTAssertEqual("(H)(e)lloWorld", string.replacing(try! NSRegularExpression(pattern: "([a-k])(?=.)", options: .caseInsensitive), with: "($1)"))
     }
 
     static var allTests = [
         ("testCreateOptions", testCreateOptions),
         ("testRanges", testRanges),
+        ("testSubstrings", testReplacingMatches),
+        ("testReplacingMatches", testRanges),
     ]
 }

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import SwiftToolbox
@@ -18,6 +18,39 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         XCTAssertEqual("hello" ~< "Hello", false)
         XCTAssertEqual("hellO" ~< "HellO", false)
         XCTAssertEqual("hellO 1" ~< "HellO 2", true)
+    }
+
+    func testCompareOptionalEquals() {
+        let string1 = "Hello"
+        let string2: String? = "hello"
+        let string3: String? = nil
+        let string4: String? = nil
+
+        XCTAssertEqual(string1 ~ string2, true)
+        XCTAssertEqual(string2 ~ string1, true)
+
+        XCTAssertEqual(string1 ~ string3, false)
+        XCTAssertEqual(string3 ~ string1, false)
+
+        XCTAssertEqual("hellö" ~ string2, false)
+        XCTAssertEqual(string2 ~ "hellö", false)
+
+        XCTAssertEqual(string3 ~ string4, true)
+    }
+
+    func testCompareOptionalLessThan() {
+        let string1 = "Hello"
+        let string2: String? = "hello"
+        let string3: String? = nil
+
+        XCTAssertEqual(string1 ~< string2, false)
+        XCTAssertEqual(string2 ~< string1, false)
+
+        XCTAssertEqual(string1 ~< string3, false)
+        XCTAssertEqual(string3 ~< string1, false)
+
+        XCTAssertEqual("hellö" ~< string2, false)
+        XCTAssertEqual(string2 ~< "hellö", true)
     }
 
     func testMatchAgainst() {

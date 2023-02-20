@@ -1,11 +1,14 @@
 //
-//  Copyright © 2016 - 2018 Werner Freytag. All rights reserved.
+//  Copyright © Werner Freytag. All rights reserved.
 //
 
 import Foundation
 
 public extension Array where Element: Equatable {
-    @discardableResult mutating func remove(_ object: Element) -> Element? {
+    /// Removes the first element that is equal to the argument
+    /// - Parameter object: array element to look for
+    /// - Returns: the removed element
+    @discardableResult mutating func removeFirst(_ object: Element) -> Element? {
         guard let index = firstIndex(of: object) else { return nil }
         return remove(at: index)
     }
