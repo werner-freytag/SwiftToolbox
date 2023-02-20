@@ -8,7 +8,7 @@ import XCTest
 class ArrayExtensionTests: XCTestCase {
     func testRemoveObject() {
         var array = ["ABC", "DEF", "GHI"]
-        array.remove("DEF")
+        array.removeFirst("DEF")
         XCTAssertEqual(array, ["ABC", "GHI"])
     }
 

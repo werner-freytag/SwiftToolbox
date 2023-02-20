@@ -5,6 +5,10 @@
 import Foundation
 
 public extension Collection {
+    /// returns an element by index or nil if the index is outside of the collections range
+    /// - Parameters:
+    ///   - index: an index of the array
+    /// - Returns: the element or nil
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
@@ -50,11 +54,16 @@ public extension Collection where Element: Equatable {
 }
 
 public extension Collection where SubSequence: Equatable {
+    /// Returns the ranges of the given slice in the array, non-overlapping
+    /// - Parameter slice: a subsequence of the collection
+    /// - Returns: array of ranges
     func ranges(of slice: SubSequence) -> [Range<Index>] {
         Array(rangeIterator(of: slice))
     }
 
-    /// Returns the ranges of the given slice in the array, non-overlapping
+    /// Returns the first range of the given slice in the array, non-overlapping
+    /// - Parameter slice: a subsequence of the collection
+    /// - Returns: The first range or nil of not matching
     func firstRange(of slice: SubSequence) -> Range<Index>? {
         for range in rangeIterator(of: slice) { return range }
         return nil
