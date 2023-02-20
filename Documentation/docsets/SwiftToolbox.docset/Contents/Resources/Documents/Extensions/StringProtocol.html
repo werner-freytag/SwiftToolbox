@@ -17,24 +17,32 @@
     <a title="StringProtocol Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftToolbox Docs</a> (77% documented)</p>
-        <p class="header-right">
+        <p><a href="../index.html">SwiftToolbox Docs</a> (100% documented)</p>
+        <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
         <a href="../index.html">SwiftToolbox Reference</a>
-        <img id="carat" src="../img/carat.png" />
+        <img id="carat" src="../img/carat.png" alt=""/>
         StringProtocol Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ResettableLazy.html">ResettableLazy</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
@@ -66,6 +74,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSRegularExpression.html">NSRegularExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSTextCheckingResult.html">NSTextCheckingResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/RandomAccessCollection.html">RandomAccessCollection</a>
@@ -115,7 +132,7 @@
                 <a href="../Functions.html#/UIGraphicsBeginImageContext(size:scale:)">UIGraphicsBeginImageContext(size:scale:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:12SwiftToolbox9cartesianys11AnySequenceVy7ElementQz_AEQy_tGx_q_tSTRzSTR_r0_lF">cartesian(_:_:)</a>
+                <a href="../Functions.html#/s:12SwiftToolbox9cartesianyQrx_q_tSTRzSTR_r0_lF">cartesian(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:12SwiftToolbox4castyxypSgKlF">cast(_:)</a>
@@ -205,6 +222,87 @@ the result is 0. If strings are same, 1 is returned</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy12SwiftToolboxE7trimmedSSvp"></a>
+                    <a name="//apple_ref/swift/Property/trimmed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE7trimmedSSvp">trimmed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove whitespaces from start and end of string</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">trimmed</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy12SwiftToolboxE8contains_7optionsSbSS_So22NSStringCompareOptionsVtF"></a>
+                    <a name="//apple_ref/swift/Method/contains(_:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE8contains_7optionsSbSS_So22NSStringCompareOptionsVtF">contains(_:<wbr>options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Find out if string contains another string</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">contains</span><span class="p">(</span><span class="n">_</span> <span class="nv">find</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">caseInsensitive</span><span class="p">,</span> <span class="o">.</span><span class="n">widthInsensitive</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sy12SwiftToolboxE5match5regex7optionsSaySSGSgSS_So26NSRegularExpressionOptionsVtKF"></a>
+                    <a name="//apple_ref/swift/Method/match(regex:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE5match5regex7optionsSaySSGSgSS_So26NSRegularExpressionOptionsVtKF">match(regex:<wbr>options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns all subpatterns of the first match</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">match</span><span class="p">(</span><span class="n">regex</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -213,7 +311,7 @@ the result is 0. If strings are same, 1 is returned</p>
                 <a name="//apple_ref/swift/Section/Available where `Index` == `String.Index`" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Available%20where%20%60Index%60%20%3D%3D%20%60String.Index%60"></a>
-                  <h3 class="section-name"><p>Available where <code>Index</code> == <code>String.Index</code></p>
+                  <h3 class="section-name"><span>Available where <code>Index</code> == <code>String.Index</code></span>
 </h3>
                 </div>
               </div>
@@ -285,7 +383,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create subscript by Int FromRange</p>
 
                       </div>
                       <div class="declaration">
@@ -312,7 +410,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create subscript by Int Range</p>
 
                       </div>
                       <div class="declaration">
@@ -339,7 +437,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create subscript by closed Int Range</p>
 
                       </div>
                       <div class="declaration">
@@ -366,7 +464,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create subscript by partial UpTo Int Range</p>
 
                       </div>
                       <div class="declaration">
@@ -393,7 +491,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create subscript by Partial Int Range</p>
 
                       </div>
                       <div class="declaration">
@@ -420,7 +518,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get subsequence by Int index</p>
 
                       </div>
                       <div class="declaration">
@@ -447,7 +545,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>find common suffix with other string</p>
 
                       </div>
                       <div class="declaration">
@@ -495,9 +593,9 @@ the result is 0. If strings are same, 1 is returned</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sy12SwiftToolboxE10substrings2of7optionss11AnySequenceVy03SubG0QzGSS_So22NSStringCompareOptionsVtF"></a>
+                    <a name="/s:Sy12SwiftToolboxE10substrings2of7optionsQrSS_So22NSStringCompareOptionsVtF"></a>
                     <a name="//apple_ref/swift/Method/substrings(of:options:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sy12SwiftToolboxE10substrings2of7optionss11AnySequenceVy03SubG0QzGSS_So22NSStringCompareOptionsVtF">substrings(of:<wbr>options:<wbr>)</a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE10substrings2of7optionsQrSS_So22NSStringCompareOptionsVtF">substrings(of:<wbr>options:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -512,7 +610,7 @@ the result is 0. If strings are same, 1 is returned</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">substrings</span><span class="p">(</span><span class="n">of</span> <span class="nv">searchString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnySequence</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">substrings</span><span class="p">(</span><span class="n">of</span> <span class="nv">searchString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">Sequence</span><span class="o">&lt;</span><span class="kt">SubSequence</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -557,9 +655,9 @@ the result is 0. If strings are same, 1 is returned</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sy12SwiftToolboxE6ranges2of7optionss11AnySequenceVySnySS5IndexVGGSS_So22NSStringCompareOptionsVtF"></a>
+                    <a name="/s:Sy12SwiftToolboxE6ranges2of7optionsQrSS_So22NSStringCompareOptionsVtF"></a>
                     <a name="//apple_ref/swift/Method/ranges(of:options:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sy12SwiftToolboxE6ranges2of7optionss11AnySequenceVySnySS5IndexVGGSS_So22NSStringCompareOptionsVtF">ranges(of:<wbr>options:<wbr>)</a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE6ranges2of7optionsQrSS_So22NSStringCompareOptionsVtF">ranges(of:<wbr>options:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -574,7 +672,7 @@ the result is 0. If strings are same, 1 is returned</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">ranges</span><span class="p">(</span><span class="n">of</span> <span class="nv">searchString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">AnySequence</span><span class="o">&lt;</span><span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">ranges</span><span class="p">(</span><span class="n">of</span> <span class="nv">searchString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">CompareOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">Sequence</span><span class="o">&lt;</span><span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -619,9 +717,9 @@ the result is 0. If strings are same, 1 is returned</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sy12SwiftToolboxE9findWordss11AnySequenceVy03SubF0QzGyF"></a>
+                    <a name="/s:Sy12SwiftToolboxE9findWordsQryF"></a>
                     <a name="//apple_ref/swift/Method/findWords()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sy12SwiftToolboxE9findWordss11AnySequenceVy03SubF0QzGyF">findWords()</a>
+                    <a class="token" href="#/s:Sy12SwiftToolboxE9findWordsQryF">findWords()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -629,14 +727,14 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Finds words inside string. Words are separated by spaces or other special chars</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">findWords</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnySequence</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">findWords</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">Sequence</span><span class="o">&lt;</span><span class="kt">SubSequence</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -656,7 +754,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Convert the strint to upper camel case</p>
 
                       </div>
                       <div class="declaration">
@@ -683,7 +781,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Capitalize first letter of string</p>
 
                       </div>
                       <div class="declaration">
@@ -764,7 +862,7 @@ the result is 0. If strings are same, 1 is returned</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>escape HTML special chars &ldquo;&amp;&rdquo;, &lsquo;&ldquo;&rsquo;, &rdquo;&lt;&ldquo;, &rdquo;&gt;&ldquo; and &rdquo;&lsquo;&ldquo;</p>
 
                       </div>
                       <div class="declaration">
@@ -778,43 +876,15 @@ the result is 0. If strings are same, 1 is returned</p>
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:Sy12SwiftToolboxE9partitionSaySay11SubSequenceQzGGyF"></a>
-                    <a name="//apple_ref/swift/Method/partition()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sy12SwiftToolboxE9partitionSaySay11SubSequenceQzGGyF">partition()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns an array with all possibilities to split the string.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">partition</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span><span class="p">]]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">Werner Freytag</a>. All rights reserved. (Last updated: 2021-07-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2023 <a class="link" href="" target="_blank" rel="external noopener">Werner Freytag</a>. All rights reserved. (Last updated: 2023-02-20)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>

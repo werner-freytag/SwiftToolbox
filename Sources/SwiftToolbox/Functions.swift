@@ -4,7 +4,9 @@
 
 import Foundation
 
+/// Exceptions to be thrown when cast fails
 public enum CastError: Error {
+    /// Casting failed
     case notCastable
 }
 

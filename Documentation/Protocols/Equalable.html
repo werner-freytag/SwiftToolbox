@@ -17,24 +17,32 @@
     <a title="Equalable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftToolbox Docs</a> (77% documented)</p>
-        <p class="header-right">
+        <p><a href="../index.html">SwiftToolbox Docs</a> (100% documented)</p>
+        <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
           </form>
-        </p>
+        </div>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
         <a href="../index.html">SwiftToolbox Reference</a>
-        <img id="carat" src="../img/carat.png" />
+        <img id="carat" src="../img/carat.png" alt=""/>
         Equalable Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ResettableLazy.html">ResettableLazy</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
@@ -66,6 +74,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSRegularExpression.html">NSRegularExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSTextCheckingResult.html">NSTextCheckingResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/RandomAccessCollection.html">RandomAccessCollection</a>
@@ -115,7 +132,7 @@
                 <a href="../Functions.html#/UIGraphicsBeginImageContext(size:scale:)">UIGraphicsBeginImageContext(size:scale:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:12SwiftToolbox9cartesianys11AnySequenceVy7ElementQz_AEQy_tGx_q_tSTRzSTR_r0_lF">cartesian(_:_:)</a>
+                <a href="../Functions.html#/s:12SwiftToolbox9cartesianyQrx_q_tSTRzSTR_r0_lF">cartesian(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:12SwiftToolbox4castyxypSgKlF">cast(_:)</a>
@@ -171,7 +188,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Protocol to make objects equatable without Self dependency</p>
 
           </section>
           <section class="section task-group-section">
@@ -190,7 +207,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Is self equal to another object</p>
 
                       </div>
                       <div class="declaration">
@@ -200,6 +217,29 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">equals</span><span class="p">(</span><span class="n">_</span> <span class="nv">other</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>other</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>some other object</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if both objects are equal</p>
                       </div>
                     </section>
                   </div>
@@ -212,7 +252,7 @@
                 <a name="//apple_ref/swift/Section/Available where `Self`: `Equatable`" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/Available%20where%20%60Self%60%3A%20%60Equatable%60"></a>
-                  <h3 class="section-name"><p>Available where <code>Self</code>: <code>Equatable</code></p>
+                  <h3 class="section-name"><span>Available where <code>Self</code>: <code>Equatable</code></span>
 </h3>
                 </div>
               </div>
@@ -237,7 +277,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p>Undocumented</p>
+                        <p>compare Equalable object with other object</p>
 
                       </div>
                       <div class="declaration">
@@ -248,6 +288,29 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>other</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Object to compare</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if self and other are same object an equal</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -256,11 +319,10 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">Werner Freytag</a>. All rights reserved. (Last updated: 2021-07-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2023 <a class="link" href="" target="_blank" rel="external noopener">Werner Freytag</a>. All rights reserved. (Last updated: 2023-02-20)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>
   </body>
-</div>
 </html>

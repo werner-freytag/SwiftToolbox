@@ -5,32 +5,39 @@
 import Foundation
 
 public extension StringProtocol where Index == String.Index {
+    /// Create subscript by Int FromRange
     subscript(range: CountablePartialRangeFrom<Int>) -> Self.SubSequence {
         return self[index(startIndex, offsetBy: range.lowerBound)...]
     }
 
+    /// Create subscript by Int Range
     subscript(range: CountableRange<Int>) -> Self.SubSequence {
         return self[index(startIndex, offsetBy: range.lowerBound) ..< index(startIndex, offsetBy: range.upperBound)]
     }
 
+    /// Create subscript by closed Int Range
     subscript(range: CountableClosedRange<Int>) -> Self.SubSequence {
         return self[index(startIndex, offsetBy: range.lowerBound) ... index(startIndex, offsetBy: range.upperBound)]
     }
 
+    /// Create subscript by partial UpTo Int Range
     subscript(range: PartialRangeUpTo<Int>) -> Self.SubSequence {
         return self[..<index(startIndex, offsetBy: range.upperBound)]
     }
 
+    /// Create subscript by Partial Int Range
     subscript(range: PartialRangeThrough<Int>) -> Self.SubSequence {
         return self[...index(startIndex, offsetBy: range.upperBound)]
     }
 
+    /// Get subsequence by Int index
     subscript(index: Int) -> Self.SubSequence {
         return self[index ... index]
     }
 }
 
 public extension StringProtocol where Index == String.Index {
+    /// find common suffix with other string
     func commonSuffix<T: StringProtocol>(with aString: T, options: String.CompareOptions = []) -> String {
         let reversedSuffix = String(reversed()).commonPrefix(with: String(aString.reversed()), options: options)
         return String(reversedSuffix.reversed())
@@ -84,16 +91,19 @@ public extension StringProtocol where Index == String.Index {
 }
 
 public extension StringProtocol where Index == String.Index {
+    /// Finds words inside string. Words are separated by spaces or other special chars
     func findWords() -> some Sequence<SubSequence> {
         substrings(of: "\\p{Lu}+(?!\\p{Ll})|\\p{Lu}?\\p{Ll}+|\\d+", options: .regularExpression)
     }
 }
 
 public extension StringProtocol where Index == String.Index {
+    /// Convert the strint to upper camel case
     func upperCamelCased() -> String {
         return findWords().map { $0.prefix(1).uppercased() + $0.dropFirst().lowercased() }.joined()
     }
 
+    /// Capitalize first letter of string
     var capitalizingFirstLetter: String {
         return prefix(1).uppercased() + dropFirst()
     }

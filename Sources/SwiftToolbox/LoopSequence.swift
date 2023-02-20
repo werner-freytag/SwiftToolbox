@@ -8,6 +8,8 @@ import Foundation
 public struct LoopSequence<Base: Sequence>: Sequence {
     private var collection: Base
 
+    /// Initialize from collection
+    /// - Parameter collection: Collection to wrap
     public init(_ collection: Base) {
         self.collection = collection
     }
