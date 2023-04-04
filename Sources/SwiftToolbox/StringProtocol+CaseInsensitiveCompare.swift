@@ -46,10 +46,12 @@ public extension StringProtocol {
         var offset = startIndex
         for (index, letter) in search.enumerated() {
             guard let range = self[offset...].range(of: String(letter), options: mask) else { return 0 }
-            similarities += 1 / Double(1 + distance(from: startIndex, to: range.lowerBound) - index)
+            
+            let distance = Double(1 + distance(from: startIndex, to: range.lowerBound) - index)
+            similarities += 1 / (distance * distance)
             offset = range.upperBound
         }
-
-        return similarities / Double(search.count)
+        
+        return similarities / Double(count)
     }
 }

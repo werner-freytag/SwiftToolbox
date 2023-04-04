@@ -75,6 +75,9 @@ class StringProtocolCaseInsensitiveCompareTests: XCTestCase {
         // Search pattern longer than string
         XCTAssertEqual("Hello".match(against: "Hello_"), 0)
 
+        // Better matches must rank better
+        XCTAssertGreaterThan("Käse".match(against: "Käse"), "Käsekuchen".match(against: "Käse"))
+
         // Earlier matches must rank better
         XCTAssertGreaterThan("Toilett Paper".match(against: "To"), "Potatoes".match(against: "To"))
         XCTAssertGreaterThan("Toothpaste".match(against: "To"), "Potatoes".match(against: "To"))
