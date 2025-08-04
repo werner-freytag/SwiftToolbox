@@ -23,7 +23,7 @@ public extension RangeReplaceableCollection where SubSequence: Equatable {
 }
 
 public extension RangeReplaceableCollection {
-    private func rangesForMoving(range: Range<Index>, to toPosition: Index) -> [Range<Index>] {
+    func rangesForMoving(range: Range<Index>, to toPosition: Index) -> [Range<Index>] {
         switch true {
         case range.contains(toPosition):
             return [startIndex ..< endIndex] // no changes
